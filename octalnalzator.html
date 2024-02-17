@@ -4,9 +4,58 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./css/oct.css">
+    <script defer src="./scripts/oct.js" type="module"></script>
     <title>OCT Angio analizator</title>
 </head>
 <body>
-    
+    <nav>
+
+        <a href="#" id='izaberi' class="gumb">Izaberi datoteku</a>
+        <a href="#" id='obrada' class="gumb" >Prikaži obradu </a>
+        <a href="#" id="link">Skini tablicu</a>
+        <a href="#" id="spiner">🐢</a>
+
+    </nav>
+
+    <div class="kontejner" id='kontejner'>
+        <h1>OCT ANGIO ANALIZATOR ŽBČ</h1>
+        <input type="file" name="datoteke" id="file" accept=".jpg, .jpeg, .png, .bmp" multiple>
+        <!-- <button id='izaberi' class="gumb">Izaberi datoteku</button>-->
+        <h4 id="prikazdat"></h4>
+
+
+
+
+        <br>
+
+
+
+        <table id="tablica" class="tablica">
+            <tr>
+                <th>Slika naslov</th>
+                <!-- <th>RGB pr.</th>-->
+                <th>udio žila i kapilara u %</th>
+            </tr>
+
+
+
+        </table>
+
+
+
+
+
+    </div>
+    <br>
+    <div class="kontejner" id="kontejnertablica">
+
+    </div>
+
+    <div class="klizac">
+        <h3>Raspon frekvencija u rasponu od</h3>
+        <h3 id="brojac__slider">1</h3>
+    <input type="range" name="korak" id="slider" min="1" max="10" step = "1" value="1">
+</div>
 </body>
 </html>
