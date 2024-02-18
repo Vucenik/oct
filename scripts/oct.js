@@ -1092,10 +1092,11 @@ klasaKlizaci.style.display = "block";
                             // podaci ispod slike
                             podaci.innerHTML = ` RGB Prosjek ${rGb}  <br> 
     relativni postotak žila na ukupnoj na slici ${ prosjek} %`;
-                            p1.textContent="RGB prosjek = "+rGb;
-                            p2.textContent="Relativni postotak žila = "+prosjek;
+                            p1.textContent="RGB prosjek = "+rGb +" %";
+                            p2.textContent="Relativni postotak žila = "+prosjek+" %";
                             li3.textContent=rGb;
                             figcaption.appendChild(p1);
+                            figcaption.appendChild(p2);
                             li1.textContent=fileName;
                             li2.textContent=prosjek;
                             ul.appendChild(li1);
