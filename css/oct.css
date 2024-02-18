@@ -82,6 +82,7 @@ main{
     width:100%;
     max-width: var(--max-width);
     background-color: var(--background-main);
+    background-image: var(--linear_gradient);
     margin:0 auto;
     border-radius: 1em;
     box-shadow: 1.0em 1.0em 5em -3em;

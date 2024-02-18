@@ -604,13 +604,22 @@ odb('Greška u obradi frekvencija')
         if (deepPolje.length <= 1) {
             deepBezPrvog = [0];
         };
+        const aritmetičkaSredina =arimetickaSredina(deepPolje);
+        const odstupanjeOdSredine = prosAbOdstOdAritSred(deepPolje, arimetickaSredina);
+      const   varijanca_izracun= varijanca(deepPolje, aritmetičkaSredina);
+
         return {
             brojElemenata:dajBrojelemenata(deepPolje),
-            aritmetičkaSredina: arimetickaSredina(deepPolje),
+            //aritmetičkaSredina: arimetickaSredina(deepPolje),
+            aritmetičkaSredina,
             medijan: medijan(deepPolje),
             raspon: [deepPolje[0], deepPolje[deepPolje.length - 1]],
-            odstupanjeOdSredine: prosAbOdstOdAritSred(deepPolje, this.arimetickaSredina),
-            varijanca: varijanca(deepPolje, this.aritmetičkaSredina),
+          //  odstupanjeOdSredine: prosAbOdstOdAritSred(deepPolje, this.arimetickaSredina), // popraviti poslije
+            //odstupanjeOdSredine: prosAbOdstOdAritSred(deepPolje, arimetickaSredina(deepPolje)),
+            odstupanjeOdSredine,
+            //varijanca: varijanca(deepPolje, this.aritmetičkaSredina), //popraviti poslije
+            //varijanca: varijanca(deepPolje, arimetickaSredina(deepPolje)),
+            varijanca:varijanca_izracun,
             standardnaDevijacija: stanDevijacija(deepPolje),
             // frekvencija:frekvencija(deepPolje),
             //grupiranjeFrekvencija:grupiranjeFrekvencija(deepPolje,5),
