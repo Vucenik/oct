@@ -846,6 +846,8 @@ klasaKlizaci.style.display = "block";
     const kontejnerTablica = document.getElementById('kontejnertablica')
     const spiner = document.getElementById('spiner');
     const linkObrada = document.getElementById('obrada');
+    const detalji = document.getElementById('detalji_kontejner'); //novi
+
     linkObrada.addEventListener('click',function(){
         if(obrada.deep||obrada.superf){
       // console.log('obrad',obrada.deep.length,'super',obrada.superf);
@@ -993,7 +995,21 @@ klasaKlizaci.style.display = "block";
                         const poljeR = document.createElement('td');
                         const poljeP = document.createElement('td');
 
-
+                        const ul =document.createElement('ul');
+                        const dl = document.createElement('div');
+                        dl.className="kontejner_dl";
+                        const li1=document.createElement('li');
+                        const li2=document.createElement('li');
+                        const li3=document.createElement('li');
+                        const li4=document.createElement('li');
+                        const gumb= document.createElement('button');
+                        gumb.className="gumb_pokazi";
+                        li4.appendChild(gumb);
+                        const figure1 = document.createElement("figure");
+                        const figure2 = document.createElement("figure");
+                        const figcaption= document.createElement("figcaption");
+                        const p1 = document.createElement("p");
+                        const p2 = document.createElement("p");
 
 
 
@@ -1013,6 +1029,8 @@ klasaKlizaci.style.display = "block";
                             borojFile--;
                             // original slika se meće na stranicu
                             kontejner.appendChild(img);
+                            figure1.appendChild(img);
+                            dl.appendChild(figure1);
                             //kreiraju se dva canvas elementa  jedan sa crveno zelenim slikama a jedan sa obrnutim koji nije aktiviran
 
                             let can = document.createElement('canvas');
@@ -1074,6 +1092,17 @@ klasaKlizaci.style.display = "block";
                             // podaci ispod slike
                             podaci.innerHTML = ` RGB Prosjek ${rGb}  <br> 
     relativni postotak žila na ukupnoj na slici ${ prosjek} %`;
+                            p1.textContent="RGB prosjek = "+rGb;
+                            p2.textContent="Relativni postotak žila = "+prosjek;
+                            li3.textContent=rGb;
+                            figcaption.appendChild(p1);
+                            li1.textContent=fileName;
+                            li2.textContent=prosjek;
+                            ul.appendChild(li1);
+                            ul.appendChild(li2);
+                            ul.appendChild(li3);
+                            ul.appendChild(li4);
+                            detalji.appendChild(ul);
 
 
                             // podaci za tablicu
@@ -1101,6 +1130,10 @@ klasaKlizaci.style.display = "block";
 
                             // dadana canvas slika crveno zelena u kontejner
                             kontejner.appendChild(can1);
+                            figure2.appendChild(can1);
+                            figure2.appendChild(figcaption);
+                            dl.appendChild(figure2);
+                            detalji.appendChild(dl);
 
                             // dodana tablica u kontejner
                             kontejner.appendChild(podaci);
