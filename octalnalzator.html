@@ -9,18 +9,25 @@
     <title>OCT Angio analizator</title>
 </head>
 <body>
+    <div class="vanjski_kontejner">
     <header>
     <nav>
-
-        <a href="#" id='izaberi' class="gumb">Izaberi datoteku</a>
-        <a href="#" id='obrada' class="gumb" >Prikaži obradu </a>
-        <a href="#" id="link">Skini tablicu</a>
-        <a href="#" id="spiner">🐢</a>
+<ul>
+    <li><a href="#" id='izaberi' class="gumb">Izaberi datoteku</a></li>
+    <li><a href="#" id='obrada' class="gumb" >Prikaži obradu </a></li>
+    <li><a href="#" id="link">Skini tablicu</a></li>
+    <li>  <a href="#" id="spiner">🐢</a></li>
+</ul>
+        
+        
+        
+      
 
     </nav>
 </header>
-<h1>OCT ANGIO ANALIZATOR  </h1>
+
 <main>
+    <h1>OCT ANGIO ANALIZATOR  </h1>
     <section class="kontejner" id='kontejner'>
       <form action="">
 
@@ -56,18 +63,23 @@
 
     </section><!-- kraj kontejner-->
     <br>
-    <section class="kontejner" id="kontejnertablica">
-        <form class="klizac">
-            <h3>Raspon frekvencija u rasponu od</h3>
-            <h3 id="brojac__slider">1</h3>
-      <label for="">
-        <input type="range" name="korak" id="slider" min="1" max="10" step = "1" value="1">
-      </label>  
-        </form>
+    <section >
+     <div class="kontejner" id="kontejnertablica">
+      
+     </div>
+     <form class="klizac">
+        <h3>Raspon frekvencija u rasponu od</h3>
+        <h3 id="brojac__slider">1</h3>
+  <label for="">
+    <input type="range" name="korak" id="slider" min="1" max="10" step = "1" value="1">
+  </label>  
+    </form>
     </section>
-
+  
+  
    
 </main>
-   
+<footer></footer>
+</div><!--kraj vanjski kontejner-->
 </body>
 </html>

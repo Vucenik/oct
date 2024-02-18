@@ -38,7 +38,7 @@ body,button,input,table,textarea,select,a,caption{
 html{
     
     height: 100%;
-  /*  overflow: hidden;*/
+   overflow: hidden;
 
     --body-background:hsl(208, 100%, 95%);
     --form-background:hsl(208, 100%, 97%);
@@ -68,17 +68,25 @@ html{
 
 
 body {
-    min-height: 100vh;
-    padding: 20px;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-
+    height:100%;
+    overflow: hidden;
    
-    background-color: rgb(255, 228, 196);
+    color: var(--boja-znaka-pou);
+   
+   
+}
+.vanjski_kontejner{
+    width: 100%;
+    height:100%;
+  /*  min-height: 100vh;*/
+    position: fixed;
+    display: flex;
+    bottom: 0;
+    flex-direction: column;
+    overflow: auto;
 }
 header{
+    display: flex;
     width:100%;
     min-height: 5em;
     max-width: var(--max-width);
@@ -87,19 +95,53 @@ header{
     align-items: center;
     justify-content: space-between;
 }
+
+header a{
+    display: block;
+    text-decoration: none;
+    color:var(--boja-znaka-pou);
+    border-bottom: 2px solid transparent;
+    opacity: 1;
+    padding: 0.3em 0.5em;
+    transition: border 0.5s,opacity 0.5s,background-color 0.5s;
+}
+header a:hover{
+    border-bottom: 2px solid var(--boja-znaka-pou);
+    opacity: 0.8;
+    background-color: var(--background-color-hoover);
+    
+}
+header nav ul{
+    list-style: none;
+    display: flex;
+}
+
 main{
+    background-image: var(--linear_gradient);
+    flex:1 1 auto;
+}
+h1{
+    text-align: center;
+    padding: 1em;
+    text-transform: uppercase;
+    font-weight: bold;
+    color: var(--boja-znaka-pou);
+}
+section{
     width:100%;
     max-width: var(--max-width);
-    background-color: var(--background-main);
-    background-image: var(--linear_gradient);
-    margin:0 auto;
-    border-radius: 1em;
-    box-shadow: 1.0em 1.0em 5em -3em;
-    flex:1 0 auto;
-  margin: 0 auto;
-  overflow: hidden;
-  
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
 }
+footer{
+    min-height: 3em;
+   
+    flex:0 0 auto,
+}
+
 
 #tablica {
     margin-bottom: 30px;
@@ -118,51 +160,11 @@ img {
     margin: 10px;
 }
 
-nav {
-    display: flex;
-    top: 0;
-    position: fixed;
-    width: 100%;
-    padding-right: 25px;
-    padding-left: 10px;
-
-
-    background-color: darkblue;
-
-}
-
-nav a {
-    color: azure;
-    text-decoration: none;
-    text-align: center;
-    padding: 14px 16px;
-    transition: all 0.3s;
-    font-weight: bolder;
-    text-transform: uppercase;
 
 
 
 
 
-}
-
-nav a:hover {
-    background-color: deepskyblue;
-    color: whitesmoke;
-}
-
-h1 {
-    padding: 14px 16px;
-    color: darkblue;
-    font-weight: bolder;
-    font-stretch: extra-expanded;
-    font-size: 300%;
-    text-align: center;
-
-
-
-
-}
 
 h4 {
     text-transform: uppercase;
@@ -173,7 +175,7 @@ h2 {
 }
 
 table {
-    color: darkblue;
+  
     padding: 10px 13px;
     width: 100%;
 
@@ -190,11 +192,11 @@ tr {
 }
 
 .kontejner {
-    background-color: rgba(245, 245, 245, 0.884);
+   
 
 
     padding: 14px 20px;
-    color: darkblue;
+
 
 }
 
@@ -208,22 +210,20 @@ hr {
 
 #spiner {
     height: 100%;
-    background-color: bisque;
+   
     border-radius: 50%;
-    color: darkblue;
-    font-size: 20px;
-    padding: 10px;
+ 
     margin-left: auto;
     cursor: default;
 
 }
 #klizac{
-    color:darkblue;
+
     text-transform: uppercase;
 
 }
 h3{
-    color:darkblue;
+ 
     text-transform: uppercase;
 }
 #slider::-webkit-slider-thumb{
@@ -231,7 +231,7 @@ h3{
     height: 30px;
     width:30px;
 border-radius: 50%;
-    background:darkblue;
+    background:var(--boja-znaka-pou);
     cursor: pointer;
   
 
@@ -242,7 +242,7 @@ border-radius: 50%;
     width:100%;
     border-radius:15px;
 
-    background:#d3d3d3;
+    background:var(--border-bottom);
     outline: none;
     opacity: 0.7;
     transition:opacity .2s;
