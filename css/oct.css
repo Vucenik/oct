@@ -136,6 +136,52 @@ section{
     align-items: center;
     justify-content: center;
 }
+.detalji_pokazi_detalji ul{
+    width:100%;
+    max-width: 40em;
+    margin-top: 1em;
+    background-color:var(--form-background);
+    font-weight: bolder;
+    display: flex;
+    list-style: none;
+    align-items: center;
+    justify-content: space-between;
+    cursor:pointer;
+    padding: 0 0.8em;
+
+}
+.kontejner_dl{
+    width:100%;
+    max-width: 40em;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color:var(--form-background);
+ 
+  
+}
+
+.gumb_pokazi{
+    border:none;
+    width: 1.3em;
+    height:1.3em;
+    border-radius: 1em;
+    background-color: transparent;
+   /* border-top: 0.4em solid var(--form-background);
+    border-left:0.4em solid var(--form-background);*/
+    border-top: 0.4em solid var(--form-header);
+    border-left:0.4em solid var(--form-header);
+    transform:rotate(45deg);
+    transition:all 0.5s;
+}
+.gumb_pokazi:hover{
+    box-shadow:inset 0.1em 0.1em 0.1em  var(--form-header),
+   -0.1em -0.1em 0.1em  var(--form-header)
+    ;
+}
+.gumb_dolje{
+    transform:rotate(-135deg);
+}
 
 footer{
     min-height: 3em;
