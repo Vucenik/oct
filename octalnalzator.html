@@ -22,11 +22,16 @@
 <h1>OCT ANGIO ANALIZATOR  </h1>
 <main>
     <section class="kontejner" id='kontejner'>
-      
+      <form action="">
+
+     <label for="file">
+
+     
         <input type="file" name="datoteke" id="file" accept=".jpg, .jpeg, .png, .bmp" multiple>
         <!-- <button id='izaberi' class="gumb">Izaberi datoteku</button>-->
+    </label>
         <h4 id="prikazdat"></h4>
-
+    </form>
 
 
 
@@ -51,15 +56,17 @@
 
     </section><!-- kraj kontejner-->
     <br>
-    <div class="kontejner" id="kontejnertablica">
+    <section class="kontejner" id="kontejnertablica">
+        <form class="klizac">
+            <h3>Raspon frekvencija u rasponu od</h3>
+            <h3 id="brojac__slider">1</h3>
+      <label for="">
+        <input type="range" name="korak" id="slider" min="1" max="10" step = "1" value="1">
+      </label>  
+        </form>
+    </section>
 
-    </div>
-
-    <div class="klizac">
-        <h3>Raspon frekvencija u rasponu od</h3>
-        <h3 id="brojac__slider">1</h3>
-    <input type="range" name="korak" id="slider" min="1" max="10" step = "1" value="1">
-</div>
+   
 </main>
    
 </body>
