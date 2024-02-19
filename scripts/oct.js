@@ -838,8 +838,15 @@ klasaKlizaci.style.display = "block";
     let stanje = [];
     let obrada =[];
     //let fileName ;
+// oserver za 
+    const observer= new ResizeObserver(ulaz=>{
+        ulaz.forEach(dl=>{
+            const visina = dl.contentRect.height+'px';
+            dl.target.parentElement.style.setProperty('--visina',visina);
 
 
+        })
+    });
 
     // id kontejner
     const kontejner = document.getElementById('kontejner');
@@ -996,14 +1003,21 @@ klasaKlizaci.style.display = "block";
                         const poljeP = document.createElement('td');
 
                         const ul =document.createElement('ul');
+                        const div = document.createElement('div');
+                        div.className="kontejner_dl";
                         const dl = document.createElement('div');
-                        dl.className="kontejner_dl";
+                        observer.observe(dl);
                         const li1=document.createElement('li');
                         const li2=document.createElement('li');
                         const li3=document.createElement('li');
                         const li4=document.createElement('li');
                         const gumb= document.createElement('button');
                         gumb.className="gumb_pokazi";
+                        gumb.addEventListener('click',e=>{
+                            e.currentTarget.classList.toggle("gumb_dolje");
+                            e.currentTarget.parentElement.parentElement.nextElementSibling.classList.toggle('pokazi_dl');
+                
+                        })
                         li4.appendChild(gumb);
                         const figure1 = document.createElement("figure");
                         const figure2 = document.createElement("figure");
@@ -1134,7 +1148,8 @@ klasaKlizaci.style.display = "block";
                             figure2.appendChild(can1);
                             figure2.appendChild(figcaption);
                             dl.appendChild(figure2);
-                            detalji.appendChild(dl);
+                            div.appendChild(dl);
+                            detalji.appendChild(div);
 
                             // dodana tablica u kontejner
                             kontejner.appendChild(podaci);
@@ -1165,5 +1180,29 @@ klasaKlizaci.style.display = "block";
         }
         /// pozcziva funkcij
         napraviFunkciju();
-
+       
     }
+/*
+     ///observer
+     const gumb_pokazi = document.querySelectorAll('.gumb_pokazi');
+     console.log(gumb_pokazi);
+     gumb_pokazi.forEach(gumb=>{
+         gumb.addEventListener('click',e=>{
+             e.currentTarget.classList.toggle("gumb_dolje");
+             e.currentTarget.parentElement.parentElement.nextElementSibling.classList.toggle('pokazi_dl');
+ 
+         })
+ 
+     });
+    
+     const observer= new ResizeObserver(ulaz=>{
+         ulaz.forEach(dl=>{
+             const visina = dl.contentRect.height+'px';
+             dl.target.parentElement.style.setProperty('--visina',visina);
+ 
+ 
+         })
+     });
+     const dl_detalji = document.querySelectorAll(".kontejner_dl>div");
+     dl_detalji.forEach(dl=>observer.observe(dl));
+  */

@@ -157,8 +157,13 @@ section{
     flex-direction: column;
     align-items: center;
     background-color:var(--form-background);
- 
-  
+    height:0;
+    overflow: hidden;
+    transition:all 0.5s;
+   
+}
+.pokazi_dl{
+    height:var(--visina);
 }
 
 .gumb_pokazi{
