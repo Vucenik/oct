@@ -849,8 +849,8 @@ klasaKlizaci.style.display = "block";
     });
 
     // id kontejner
-    const kontejner = document.getElementById('kontejner');
-    const kontejnerTablica = document.getElementById('kontejnertablica')
+   // const kontejner = document.getElementById('kontejner');
+   const kontejnerTablica = document.getElementById('kontejnertablica')
     const spiner = document.getElementById('spiner');
     const linkObrada = document.getElementById('obrada');
     const detalji = document.getElementById('detalji_kontejner'); //novi
@@ -876,12 +876,13 @@ klasaKlizaci.style.display = "block";
     })
 
     // id tablica
-    const tablica = document.getElementById('tablica');
+    
+   //const tablica = document.getElementById('tablica');
 
     // id skini tablicu kao text dokument
     // down load datoteke kao json iz podataka obrada
-    const link = document.getElementById('link');
-    link.download = 'tablica.txt';
+   const link = document.getElementById('link');
+   link.download = 'tablica.txt';
 
 
     link.addEventListener('click', e => {
@@ -923,10 +924,10 @@ klasaKlizaci.style.display = "block";
     fileInput.style.display = "none";
 
     // selekcija naslova za prikaz selektiranog elementa
-    const prikazDat = document.getElementById('prikazdat');
+    //const prikazDat = document.getElementById('prikazdat');
     fileInput.addEventListener('change', () => {
-        prikazDat.innerHTML = "";
-        prikazDat.innerHTML = fileInput.files[0].name;
+      // prikazDat.innerHTML = "";
+    //    prikazDat.innerHTML = fileInput.files[0].name;
         gumb();
     })
     //  izaberi datoteku malo drukčije
@@ -995,18 +996,18 @@ klasaKlizaci.style.display = "block";
 
                         const img = document.createElement("img");
                         // kreira div element za podatke ispod slike
-                        const podaci = document.createElement("div");
-                        // kreira potrebni redak i ćelije za kreiranje tablice sa podacima
+                   /*   const podaci = document.createElement("div");
+                          // kreira potrebni redak i ćelije za kreiranje tablice sa podacima
                         const redak = document.createElement('tr');
                         const poljeN = document.createElement('td');
                         const poljeR = document.createElement('td');
-                        const poljeP = document.createElement('td');
+                        const poljeP = document.createElement('td');*/
 
                         const ul =document.createElement('ul');
                         const div = document.createElement('div');
                         div.className="kontejner_dl";
                         const dl = document.createElement('div');
-                        observer.observe(dl);
+                     
                         const li1=document.createElement('li');
                         const li2=document.createElement('li');
                         const li3=document.createElement('li');
@@ -1104,8 +1105,8 @@ klasaKlizaci.style.display = "block";
                             prosjek = prosjek.toFixed(2);
                             let rGb = RGBprosjek;  // Math.ceil( dajProsjekRgb(indexPolje)[0],2);
                             // podaci ispod slike
-                            podaci.innerHTML = ` RGB Prosjek ${rGb}  <br> 
-    relativni postotak žila na ukupnoj na slici ${ prosjek} %`;
+                          /*  podaci.innerHTML = ` RGB Prosjek ${rGb}  <br> 
+    relativni postotak žila na ukupnoj na slici ${ prosjek} %`;*/
                             p1.textContent="RGB prosjek = "+rGb +" %";
                             p2.textContent="Relativni postotak žila = "+prosjek+" %";
                             li3.textContent=rGb;
@@ -1119,7 +1120,7 @@ klasaKlizaci.style.display = "block";
                             ul.appendChild(li4);
                             detalji.appendChild(ul);
 
-
+/*
                             // podaci za tablicu
                             poljeN.innerText = fileName;
                             poljeP.textContent = prosjek;
@@ -1127,8 +1128,8 @@ klasaKlizaci.style.display = "block";
                             redak.appendChild(poljeN);
                             // redak.appendChild(poljeR);
                             redak.appendChild(poljeP);
-                            tablica.append(redak);
-
+                           tablica.append(redak);
+*/
                             // slika inverznih boja isključeno
                             //ctx.putImageData(obData,0,0);
 
@@ -1138,21 +1139,22 @@ klasaKlizaci.style.display = "block";
                             // kontejner.appendChild(can);
                             /////NASLOV/////////
                             //kreira naslov slike iz podatka file.name i meće ga na vrh slike
-                            let naslov = document.createElement('h4');
-                            naslov.innerHTML = fileName;
+                          //  let naslov = document.createElement('h4');
+                           // naslov.innerHTML = fileName;
 
-                            kontejner.appendChild(naslov);
+                           // kontejner.appendChild(naslov);
 
                             // dadana canvas slika crveno zelena u kontejner
-                            kontejner.appendChild(can1);
+                           // kontejner.appendChild(can1);
                             figure2.appendChild(can1);
                             figure2.appendChild(figcaption);
                             dl.appendChild(figure2);
                             div.appendChild(dl);
                             detalji.appendChild(div);
+                            observer.observe(dl);
 
                             // dodana tablica u kontejner
-                            kontejner.appendChild(podaci);
+                           // kontejner.appendChild(podaci);
                             ////***********OBNOVA STANJA****************************************
                             stanje.push(napraviObjekt(fileName, prosjek, rGb))
                             // ********OBNOVA OBRADE**********************
