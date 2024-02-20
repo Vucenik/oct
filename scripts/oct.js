@@ -854,6 +854,7 @@ klasaKlizaci.style.display = "block";
     const spiner = document.getElementById('spiner');
     const linkObrada = document.getElementById('obrada');
     const detalji = document.getElementById('detalji_kontejner'); //novi
+detalji.insertAdjacentHTML('afterbegin',"<ul><li>oznaka slike</li><li>udio žila i kapilara u %</li><li>RGB </li><li></li></ul>");
 
     linkObrada.addEventListener('click',function(){
         if(obrada.deep||obrada.superf){
@@ -1107,13 +1108,13 @@ klasaKlizaci.style.display = "block";
                             // podaci ispod slike
                           /*  podaci.innerHTML = ` RGB Prosjek ${rGb}  <br> 
     relativni postotak žila na ukupnoj na slici ${ prosjek} %`;*/
-                            p1.textContent="RGB prosjek = "+rGb +" %";
+                            p1.textContent="RGB prosjek = "+rGb ;
                             p2.textContent="Relativni postotak žila = "+prosjek+" %";
                             li3.textContent=rGb;
                             figcaption.appendChild(p1);
                             figcaption.appendChild(p2);
                             li1.textContent=fileName;
-                            li2.textContent=prosjek;
+                            li2.textContent=prosjek+" %";
                             ul.appendChild(li1);
                             ul.appendChild(li2);
                             ul.appendChild(li3);
