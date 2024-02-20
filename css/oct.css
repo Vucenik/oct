@@ -202,6 +202,7 @@ section{
     align-items: center;
     background-color:var(--form-background);
     height:0;
+    border-bottom: 1px solid var(--border-bottom) ;
     overflow: hidden;
     transition:all 0.5s;
    
