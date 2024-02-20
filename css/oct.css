@@ -89,7 +89,7 @@ body {
 header{
     display: flex;
     width:100%;
-    min-height: 5em;
+    min-height: 6em;
     max-width: var(--max-width);
     padding: 1em 2em;
     margin:0 auto;
@@ -115,6 +115,11 @@ header a:hover{
 header nav ul{
     list-style: none;
     display: flex;
+}
+header >span{
+ display: flex;
+ align-items: center;
+ font-size: 1.5em;
 }
 
 main{
