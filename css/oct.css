@@ -84,6 +84,7 @@ body {
     bottom: 0;
     flex-direction: column;
     scroll-behavior: smooth;
+    scroll-margin-block-start: 6em;
     overflow: auto;
 }
 header{
@@ -95,6 +96,9 @@ header{
     margin:0 auto;
     align-items: center;
     justify-content: space-between;
+    position:sticky;
+    top:0;
+    background-color: white;
 }
 
 header a{
