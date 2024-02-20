@@ -84,7 +84,7 @@ body {
     bottom: 0;
     flex-direction: column;
     scroll-behavior: smooth;
-    scroll-margin-block-start: 6em;
+    scroll-padding-block-start: 6em;
     overflow: auto;
 }
 header{
