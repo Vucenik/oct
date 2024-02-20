@@ -2,9 +2,14 @@
     // VERZIJA 1.0.5. mod broj elemenata
     //AUTOR VLATKO VUČENIK 17.12.2019
     //******Funkcije html elementi
-    const napraviTablicu = function (po = [], id) {
+    const napraviTablicu = function (po = [], id,naslov="") {
 
         let tablica = document.createElement('table');
+        const caption = document.createElement("caption");
+        caption.textContent=naslov;
+        tablica.appendChild(caption);
+
+        
         tablica.setAttribute('class', 'tablica');
         // tablica.setAttribute('id',id);
         let tr = document.createElement('tr');
@@ -174,10 +179,10 @@ let obradaSuper = `
 <h4> Relativna standardna devijacija ${rsdF} </h4>
 `
 kontejnerTablica.insertAdjacentHTML('afterBegin', ' <h2>Obrada DEEP</h2>');
-kontejnerTablica.appendChild(napraviTablicu(obrada.deep, 'pr'));
+kontejnerTablica.appendChild(napraviTablicu(obrada.deep, 'pr','Obrada DEEP'));
 kontejnerTablica.insertAdjacentHTML('beforeEnd', obradaDeep);
 kontejnerTablica.insertAdjacentHTML('beforeEnd', ' <h2>Obrada superficijal</h2>');
-kontejnerTablica.appendChild(napraviTablicu(obrada.superf, 'pr'));
+kontejnerTablica.appendChild(napraviTablicu(obrada.superf, 'pr',"Obrada SUPERFICIJAL"));
 kontejnerTablica.insertAdjacentHTML('beforeEnd', obradaSuper);
 
 
