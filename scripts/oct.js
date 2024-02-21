@@ -137,8 +137,8 @@ let medijanDeep = obrada.deepObrada.medijan;
 let raspon1Deep = obrada.deepObrada.raspon[0];
 let raspon2Deep = obrada.deepObrada.raspon[1];
 let varijancaDeep = obrada.deepObrada.varijanca;
-let devijacijaDeep = obrada.deepObrada.standardnaDevijacija;
-let rsdDeep = obrada.deepObrada.rsd;
+let devijacijaDeep =Number.parseFloat( obrada.deepObrada.standardnaDevijacija).toFixed(2);
+let rsdDeep = Number.parseFloat(obrada.deepObrada.rsd).toFixed(2);
 let brojEelemenataDeep = obrada.deepObrada.brojElemenata;
 
 
@@ -147,8 +147,8 @@ let medinaF = obrada.superfObrada.medijan;
 let raspon1F = obrada.superfObrada.raspon[0];
 let raspon2F = obrada.superfObrada.raspon[1];
 let odstupanjeOdSredineF = obrada.superfObrada.odstupanjeOdSredine;
-let varijancaF =obrada.superfObrada.varijanca ;
-let rsdF = obrada.superfObrada.rsd;
+let varijancaF =Number.parseFloat(obrada.superfObrada.varijanca).toFixed(2);
+let rsdF = Number.parseFloat(obrada.superfObrada.rsd).toFixed(2);
 let brojEelemenataF = obrada.deepObrada.brojElemenata;
 // if(obrada.superfObrada.varijanca==!NaN){
 //     varijancaF = obrada.superfObrada.varijanca;
@@ -157,7 +157,7 @@ let brojEelemenataF = obrada.deepObrada.brojElemenata;
 let devijacijaF = obrada.superfObrada.standardnaDevijacija?obrada.superfObrada.standardnaDevijacija:"";
 
 //console.log('var',obrada.superfObrada.varijanca )
-
+/*
 let obradaDeep = `
 <h4> Broj elemenata N=  ${brojEelemenataDeep} </h4>
 <h4> Aritmetička sredina ${aritmetičkaSredinaDeep} </h4>
@@ -178,6 +178,107 @@ let obradaSuper = `
 <h4> Standardna devijacija ${devijacijaF} </h4>
 <h4> Relativna standardna devijacija ${rsdF} </h4>
 `
+*/
+const obradaDeep = `
+<table class="statistika">
+        <caption>
+            Statističaka obrada DEEP
+        </caption>
+        <thead>
+            <tr>
+                <th scope="col">Staistička funkcija</th>
+                <th scope="col">Statistička vrijednost</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <th scope="row">Broj elemenata N = </th>
+                <td>${brojEelemenataDeep}</td>
+            </tr>
+            <tr>
+                <th scope="row">Aritmetička sredina</th>
+                <td>${aritmetičkaSredinaDeep} </td>
+            </tr>
+            <tr>
+                <th scope="row">Medijan </th>
+                <td>${medijanDeep}</td>
+            </tr>
+            <tr>
+                <th scope="row">Raspon </th>
+                <td>${raspon1Deep} - ${raspon2Deep} </td>
+            </tr>
+            <tr>
+                <th scope="row">Prosječno odstupanje od aritmetičke sredine </th>
+                <td>${odstupanjeOdSredineDeep} </td>
+            </tr>
+            <tr>
+                <th scope="row">Varijanca </th>
+                <td>${varijancaDeep}</td>
+            </tr>
+            <tr>
+                <th scope="row">Standardna devijacija </th>
+                <td>${devijacijaDeep} </td>
+            </tr>
+            <tr>
+                <th scope="row">Relativna standardna devijacija </th>
+                <td>${rsdDeep}</td>
+            </tr>
+        </tbody>
+    </table>
+
+`;
+
+let obradaSuper = `
+<table class="statistika">
+        <caption>
+            Statističaka obrada SUPERFICIJAL
+        </caption>
+        <thead>
+            <tr>
+                <th scope="col">Staistička funkcija</th>
+                <th scope="col">Statistička vrijednost</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <th scope="row">Broj elemenata N = </th>
+                <td>${brojEelemenataF} </td>
+            </tr>
+            <tr>
+                <th scope="row">Aritmetička sredina</th>
+                <td>${aritmetičkaSredinaF} </td>
+            </tr>
+            <tr>
+                <th scope="row">Medijan </th>
+                <td>${medinaF}</td>
+            </tr>
+            <tr>
+                <th scope="row">Raspon </th>
+                <td>${raspon1F} - ${raspon2F} </td>
+            </tr>
+            <tr>
+                <th scope="row">Prosječno odstupanje od aritmetičke sredine </th>
+                <td>${odstupanjeOdSredineF} </td>
+            </tr>
+            <tr>
+                <th scope="row">Varijanca </th>
+                <td>${varijancaF}</td>
+            </tr>
+            <tr>
+                <th scope="row">Standardna devijacija </th>
+                <td>${devijacijaF} </td>
+            </tr>
+            <tr>
+                <th scope="row">Relativna standardna devijacija </th>
+                <td>${rsdF}</td>
+            </tr>
+        </tbody>
+    </table>
+
+
+`
+
+
 //kontejnerTablica.insertAdjacentHTML('afterBegin', ' <h2>Obrada DEEP</h2>');
 kontejnerTablica.appendChild(napraviTablicu(obrada.deep, 'pr','Obrada DEEP'));
 kontejnerTablica.insertAdjacentHTML('beforeEnd', obradaDeep);

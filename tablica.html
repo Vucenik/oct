@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <table class="statistika">
+        <caption>
+            Statističaka obrada DEEP
+        </caption>
+        <thead>
+            <tr>
+                <th scope="col">Staistička funkcija</th>
+                <th scope="col">Statistička vrijednost</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <th scope="row">Broj elemenata N = </th>
+                <td></td>
+            </tr>
+            <tr>
+                <th scope="row">Aritmetička sredina</th>
+                <td></td>
+            </tr>
+            <tr>
+                <th scope="row">Medijan </th>
+                <td></td>
+            </tr>
+            <tr>
+                <th scope="row">Raspon </th>
+                <td></td>
+            </tr>
+            <tr>
+                <th scope="row">Prosječno odstupanje od aritmetičke sredine </th>
+                <td></td>
+            </tr>
+            <tr>
+                <th scope="row">Varijanca </th>
+                <td></td>
+            </tr>
+            <tr>
+                <th scope="row">Standardna devijacija </th>
+                <td></td>
+            </tr>
+            <tr>
+                <th scope="row">Relativna standardna devijacija </th>
+                <td></td>
+            </tr>
+        </tbody>
+    </table>
+
+    <script>
+        let obradaDeep1= `
+<h4> Broj elemenata N=  ${brojEelemenataDeep} </h4>
+<h4> Aritmetička sredina ${aritmetičkaSredinaDeep} </h4>
+<h4> Medijan ${medijanDeep} </h4>
+<h4> Raspon ${raspon1Deep} - ${raspon2Deep} </h4>
+<h4> Prosječno odstupanje od aritmetičke sredine ${odstupanjeOdSredineDeep} </h4>
+<h4> Varijanca ${varijancaDeep} </h4>
+<h4> Standardna devijacija ${devijacijaDeep} </h4>
+<h4> Relativna standardna devijacija ${rsdDeep} </h4>
+`
+const obradaDeep = `
+<table class="statistika">
+        <caption>
+            Statističaka obrada DEEP
+        </caption>
+        <thead>
+            <tr>
+                <th scope="col">Staistička funkcija</th>
+                <th scope="col">Statistička vrijednost</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <th scope="row">Broj elemenata N = </th>
+                <td>${brojEelemenataDeep}</td>
+            </tr>
+            <tr>
+                <th scope="row">Aritmetička sredina</th>
+                <td>${aritmetičkaSredinaDeep} </td>
+            </tr>
+            <tr>
+                <th scope="row">Medijan </th>
+                <td><${medijanDeep}/td>
+            </tr>
+            <tr>
+                <th scope="row">Raspon </th>
+                <td>${raspon1Deep} - ${raspon2Deep} </td>
+            </tr>
+            <tr>
+                <th scope="row">Prosječno odstupanje od aritmetičke sredine </th>
+                <td>${odstupanjeOdSredineDeep} </td>
+            </tr>
+            <tr>
+                <th scope="row">Varijanca </th>
+                <td>${varijancaDeep}</td>
+            </tr>
+            <tr>
+                <th scope="row">Standardna devijacija </th>
+                <td>${devijacijaDeep} </td>
+            </tr>
+            <tr>
+                <th scope="row">Relativna standardna devijacija </th>
+                <td><${rsdDeep}/td>
+            </tr>
+        </tbody>
+    </table>
+
+`;
+
+let obradaSuper = `
+<table class="statistika">
+        <caption>
+            Statističaka obrada DEEP
+        </caption>
+        <thead>
+            <tr>
+                <th scope="col">Staistička funkcija</th>
+                <th scope="col">Statistička vrijednost</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <th scope="row">Broj elemenata N = </th>
+                <td>${brojEelemenataF} </td>
+            </tr>
+            <tr>
+                <th scope="row">Aritmetička sredina</th>
+                <td>${aritmetičkaSredinaF} </td>
+            </tr>
+            <tr>
+                <th scope="row">Medijan </th>
+                <td>${medinaF}</td>
+            </tr>
+            <tr>
+                <th scope="row">Raspon </th>
+                <td><${raspon1F} - ${obrada.superfObrada.raspon[1]} /td>
+            </tr>
+            <tr>
+                <th scope="row">Prosječno odstupanje od aritmetičke sredine </th>
+                <td>${odstupanjeOdSredineF} </td>
+            </tr>
+            <tr>
+                <th scope="row">Varijanca </th>
+                <td>${varijancaDeep}</td>
+            </tr>
+            <tr>
+                <th scope="row">Standardna devijacija </th>
+                <td>${devijacijaF} </td>
+            </tr>
+            <tr>
+                <th scope="row">Relativna standardna devijacija </th>
+                <td>${rsdF}</td>
+            </tr>
+        </tbody>
+    </table>
+
+
+`
+    </script>
+</body>
+</html>
