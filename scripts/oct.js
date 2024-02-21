@@ -150,35 +150,10 @@ let odstupanjeOdSredineF = obrada.superfObrada.odstupanjeOdSredine;
 let varijancaF =Number.parseFloat(obrada.superfObrada.varijanca).toFixed(2);
 let rsdF = Number.parseFloat(obrada.superfObrada.rsd).toFixed(2);
 let brojEelemenataF = obrada.deepObrada.brojElemenata;
-// if(obrada.superfObrada.varijanca==!NaN){
-//     varijancaF = obrada.superfObrada.varijanca;
-// }
-//(obrada.superfObrada.varijanca===NaN)?"":obrada.superfObrada.varijanca;
+
 let devijacijaF = obrada.superfObrada.standardnaDevijacija?obrada.superfObrada.standardnaDevijacija:"";
 
-//console.log('var',obrada.superfObrada.varijanca )
-/*
-let obradaDeep = `
-<h4> Broj elemenata N=  ${brojEelemenataDeep} </h4>
-<h4> Aritmetička sredina ${aritmetičkaSredinaDeep} </h4>
-<h4> Medijan ${medijanDeep} </h4>
-<h4> Raspon ${raspon1Deep} - ${raspon2Deep} </h4>
-<h4> Prosječno odstupanje od aritmetičke sredine ${odstupanjeOdSredineDeep} </h4>
-<h4> Varijanca ${varijancaDeep} </h4>
-<h4> Standardna devijacija ${devijacijaDeep} </h4>
-<h4> Relativna standardna devijacija ${rsdDeep} </h4>
-`
-let obradaSuper = `
-<h4> Broj elemenata N=  ${brojEelemenataF} </h4>
-<h4> Aritmetička sredina ${aritmetičkaSredinaF} </h4>
-<h4> Medijan ${medinaF} </h4>
-<h4> Raspon ${raspon1F} - ${obrada.superfObrada.raspon[1]} </h4>
-<h4> Prosječno odstupanje od aritmetičke sredine ${odstupanjeOdSredineF} </h4>
-<h4> Varijanca ${varijancaF } </h4>
-<h4> Standardna devijacija ${devijacijaF} </h4>
-<h4> Relativna standardna devijacija ${rsdF} </h4>
-`
-*/
+
 const obradaDeep = `
 <table class="statistika">
         <caption>
@@ -278,11 +253,9 @@ let obradaSuper = `
 
 `
 
-
-//kontejnerTablica.insertAdjacentHTML('afterBegin', ' <h2>Obrada DEEP</h2>');
 kontejnerTablica.appendChild(napraviTablicu(obrada.deep, 'pr','Obrada DEEP'));
 kontejnerTablica.insertAdjacentHTML('beforeEnd', obradaDeep);
-//kontejnerTablica.insertAdjacentHTML('beforeEnd', ' <h2>Obrada superficijal</h2>');
+
 kontejnerTablica.appendChild(napraviTablicu(obrada.superf, 'pr',"Obrada SUPERFICIJAL"));
 kontejnerTablica.insertAdjacentHTML('beforeEnd', obradaSuper);
 
@@ -508,10 +481,13 @@ kontejnerTablica.insertAdjacentHTML('beforeEnd', obradaSuper);
 
     //console.log('raspon',raspon(polje))
 
-    const prosAbOdstOdAritSred = function (po = [], aritSredina = arimetickaSredina(po)) {
+    const prosAbOdstOdAritSred = function (po = [],arit ) {
         //let aritSredina = arimetickaSredina(po);
+       // const aritSredina = arimetickaSredina(po);
+        //console.log('sredina',aritSredina);
         let odstupanje = po.reduce((ak, val) => {
-            return ak + Math.abs(Number(val) - aritSredina);
+            //return ak + Math.abs(Number(val) - aritSredina);
+            return ak + Math.abs(Number(val) - arit);
         }, 0)
         return (odstupanje / po.length).toFixed(2);
 
@@ -711,7 +687,8 @@ odb('Greška u obradi frekvencija')
             deepBezPrvog = [0];
         };
         const aritmetičkaSredina =arimetickaSredina(deepPolje);
-        const odstupanjeOdSredine = prosAbOdstOdAritSred(deepPolje, arimetickaSredina);
+       // const odstupanjeOdSredine = prosAbOdstOdAritSred(deepPolje, arimetickaSredina);
+        const odstupanjeOdSredine = prosAbOdstOdAritSred(deepPolje, aritmetičkaSredina);
       const   varijanca_izracun= varijanca(deepPolje, aritmetičkaSredina);
 
         return {
@@ -818,7 +795,7 @@ let najveciStupac = polje.reduce((rez,val)=>{
 },-Infinity)
 //console.log('najveci',najveciStupac);
 let brojac = 0
-console.log('grafx',xGraf);
+
 
 const crtajGraf = function(x){
 let visina = (x.length/najveciStupac)*300*0.8;
