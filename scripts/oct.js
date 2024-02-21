@@ -136,7 +136,7 @@ let aritmetičkaSredinaDeep = obrada.deepObrada.aritmetičkaSredina;
 let medijanDeep = obrada.deepObrada.medijan;
 let raspon1Deep = obrada.deepObrada.raspon[0];
 let raspon2Deep = obrada.deepObrada.raspon[1];
-let varijancaDeep = obrada.deepObrada.varijanca;
+let varijancaDeep = Number.parseFloat(obrada.deepObrada.varijanca).toFixed(2);
 let devijacijaDeep =Number.parseFloat( obrada.deepObrada.standardnaDevijacija).toFixed(2);
 let rsdDeep = Number.parseFloat(obrada.deepObrada.rsd).toFixed(2);
 let brojEelemenataDeep = obrada.deepObrada.brojElemenata;
@@ -151,7 +151,8 @@ let varijancaF =Number.parseFloat(obrada.superfObrada.varijanca).toFixed(2);
 let rsdF = Number.parseFloat(obrada.superfObrada.rsd).toFixed(2);
 let brojEelemenataF = obrada.deepObrada.brojElemenata;
 
-let devijacijaF = obrada.superfObrada.standardnaDevijacija?obrada.superfObrada.standardnaDevijacija:"";
+//let devijacijaF = obrada.superfObrada.standardnaDevijacija?obrada.superfObrada.standardnaDevijacija:"";
+let devijacijaF = Number.parseFloat(obrada.superfObrada.standardnaDevijacija).toFixed(2);
 
 
 const obradaDeep = `
