@@ -91,26 +91,38 @@ header{
     display: flex;
     width:100%;
     min-height: 6em;
-    max-width: var(--max-width);
+   
     padding: 1em 2em;
-    margin:0 auto;
+ 
     align-items: center;
-    justify-content: space-between;
+    justify-content: center;
     position:sticky;
     top:0;
     background-color: white;
+    z-index: 100;
+}
+header nav{
+    width:100%;
+    max-width: var(--max-width);
+
+    display: flex;
+    justify-content: space-between;
+    
 }
 
-header a{
+header a, header label{
+    background-color: white;
+    
+    cursor: pointer;
     display: block;
     text-decoration: none;
     color:var(--boja-znaka-pou);
     border-bottom: 2px solid transparent;
     opacity: 1;
     padding: 0.3em 0.5em;
-    transition: border 0.5s,opacity 0.5s,background-color 0.5s;
+    transition: border 0.5s, opacity 0.5s, background-color 0.5s;
 }
-header a:hover{
+header a:hover,header label:hover{
     border-bottom: 2px solid var(--boja-znaka-pou);
     opacity: 0.8;
     background-color: var(--background-color-hoover);
@@ -119,6 +131,10 @@ header a:hover{
 header nav ul{
     list-style: none;
     display: flex;
+}
+#file{
+    display: none;
+   
 }
 header >span{
  display: flex;
@@ -242,6 +258,29 @@ section{
     transform:rotate(-135deg);
 }
 
+table{
+    border-collapse: collapse;
+    text-align: center;
+
+}
+caption{
+    border-top-right-radius: 0.2em;
+    border-top-left-radius: 0.2em;
+    background-color: white;
+    padding:2em 0em;
+    font-size: 1.5em;
+    text-align: start;
+}
+th,td{
+    border-bottom:2px solid var(--border-bottom);
+    padding: 1em;
+}
+th:first-child,td:first-child{
+    text-align: start;
+}
+td:last-child{
+    color:var(--font-color-crveni);
+}
 footer{
     min-height: 3em;
    text-align: center;
@@ -259,9 +298,7 @@ footer>a{
     margin-top: 30px;
 }
 
-#file {
-    margin: 20px;
-}
+
 
 canvas {
     margin: 10px;
@@ -284,7 +321,7 @@ h4 {
 h2 {
     text-transform: uppercase;
 }
-
+/*
 table {
   
     padding: 10px 13px;
@@ -301,7 +338,7 @@ tr {
     font-weight: bolder;
     text-transform: uppercase;
 }
-
+*/
 .kontejner {
    
 
@@ -329,7 +366,7 @@ hr {
 
 }
 #klizac{
-
+display: none;
     text-transform: uppercase;
 
 }

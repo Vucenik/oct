@@ -178,10 +178,10 @@ let obradaSuper = `
 <h4> Standardna devijacija ${devijacijaF} </h4>
 <h4> Relativna standardna devijacija ${rsdF} </h4>
 `
-kontejnerTablica.insertAdjacentHTML('afterBegin', ' <h2>Obrada DEEP</h2>');
+//kontejnerTablica.insertAdjacentHTML('afterBegin', ' <h2>Obrada DEEP</h2>');
 kontejnerTablica.appendChild(napraviTablicu(obrada.deep, 'pr','Obrada DEEP'));
 kontejnerTablica.insertAdjacentHTML('beforeEnd', obradaDeep);
-kontejnerTablica.insertAdjacentHTML('beforeEnd', ' <h2>Obrada superficijal</h2>');
+//kontejnerTablica.insertAdjacentHTML('beforeEnd', ' <h2>Obrada superficijal</h2>');
 kontejnerTablica.appendChild(napraviTablicu(obrada.superf, 'pr',"Obrada SUPERFICIJAL"));
 kontejnerTablica.insertAdjacentHTML('beforeEnd', obradaSuper);
 
@@ -865,7 +865,7 @@ detalji.insertAdjacentHTML('afterbegin',"<ul><li>oznaka slike</li><li>udio žila
         if(obrada.deep||obrada.superf){
       // console.log('obrad',obrada.deep.length,'super',obrada.superf);
         updateStanje();
-        klasaKlizaci.style.display = "block";
+      klasaKlizaci.style.display = "block";
         }
     })
 
@@ -875,10 +875,10 @@ detalji.insertAdjacentHTML('afterbegin',"<ul><li>oznaka slike</li><li>udio žila
 
    klasaKlizaci.style.display ="none";
     const brojacSlider = document.getElementById("brojac__slider")
-    slider.addEventListener("change",function(){
+    slider.addEventListener("change",e=>{
        // console.log("value",this.value);
-        brojacSlider.innerHTML = this.value;
-        updateStanje(this.value);
+        brojacSlider.innerHTML = e.currentTarget.value;
+        updateStanje(e.currentTarget.value);
     })
 
     // id tablica
@@ -927,7 +927,7 @@ detalji.insertAdjacentHTML('afterbegin',"<ul><li>oznaka slike</li><li>udio žila
 
     // selektor inputa file
     const fileInput = document.getElementById('file');
-    fileInput.style.display = "none";
+  // fileInput.style.display = "none";
 
     // selekcija naslova za prikaz selektiranog elementa
     //const prikazDat = document.getElementById('prikazdat');
@@ -937,7 +937,7 @@ detalji.insertAdjacentHTML('afterbegin',"<ul><li>oznaka slike</li><li>udio žila
         gumb();
     })
     //  izaberi datoteku malo drukčije
-    const izaberi = document.getElementById('izaberi');
+   /* const izaberi = document.getElementById('izaberi');
     izaberi.addEventListener('click', e => {
 
         if (fileInput) {
@@ -947,7 +947,7 @@ detalji.insertAdjacentHTML('afterbegin',"<ul><li>oznaka slike</li><li>udio žila
         }
     }, false)
 
-
+*/
 
 
     /////// read filet ////
@@ -1182,7 +1182,7 @@ detalji.insertAdjacentHTML('afterbegin',"<ul><li>oznaka slike</li><li>udio žila
 
                     }
                 })
-
+                .catch(e=>console.log(e))
 
 
         }
@@ -1190,27 +1190,3 @@ detalji.insertAdjacentHTML('afterbegin',"<ul><li>oznaka slike</li><li>udio žila
         napraviFunkciju();
        
     }
-/*
-     ///observer
-     const gumb_pokazi = document.querySelectorAll('.gumb_pokazi');
-     console.log(gumb_pokazi);
-     gumb_pokazi.forEach(gumb=>{
-         gumb.addEventListener('click',e=>{
-             e.currentTarget.classList.toggle("gumb_dolje");
-             e.currentTarget.parentElement.parentElement.nextElementSibling.classList.toggle('pokazi_dl');
- 
-         })
- 
-     });
-    
-     const observer= new ResizeObserver(ulaz=>{
-         ulaz.forEach(dl=>{
-             const visina = dl.contentRect.height+'px';
-             dl.target.parentElement.style.setProperty('--visina',visina);
- 
- 
-         })
-     });
-     const dl_detalji = document.querySelectorAll(".kontejner_dl>div");
-     dl_detalji.forEach(dl=>observer.observe(dl));
-  */

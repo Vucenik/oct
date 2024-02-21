@@ -17,18 +17,32 @@
     <header>
     <nav>
 <ul>
-    <li><a href="#" id='izaberi' class="gumb">Izaberi datoteku</a></li>
+    <li>
+    <form action="">
+
+       
+        
+           <input type="file" name="datoteke" id="file" accept=".jpg, .jpeg, .png, .bmp" multiple>
+           <!-- <button id='izaberi' class="gumb">Izaberi datoteku</button>-->
+    
+        <!--  <h4 id="prikazdat"></h4>--> 
+       </form>
+    <!--<li><a href="#" id='izaberi' class="gumb">Izaberi datoteku</a></li>-->
+     <label for="file">
+        Izaberi datoteku
+    </label>
+</li>
     <li><a href="#kontejnertablica" id='obrada' class="gumb" >Prikaži obradu </a></li>
     <li><a href="#" id="link">Skini tablicu</a></li>
     
 </ul>
      
         
-        
-      
-
+  <a href="#naslov">   
+<span id="spiner">🐢</span>
+</a>   
     </nav>
-    <span id="spiner">🐢</span>
+  
 </header>
 
 <main>
@@ -86,16 +100,7 @@
 
     </section>
     <section class="kontejner" id='kontejner'>
-      <form action="">
-
-     <label for="file">
-
-     
-        <input type="file" name="datoteke" id="file" accept=".jpg, .jpeg, .png, .bmp" multiple>
-        <!-- <button id='izaberi' class="gumb">Izaberi datoteku</button>-->
-    </label>
-     <!--  <h4 id="prikazdat"></h4>--> 
-    </form>
+      
 
 
 
