@@ -2,131 +2,15 @@
     // VERZIJA 1.0.5. mod broj elemenata
     //AUTOR VLATKO VUČENIK 17.12.2019
     //******Funkcije html elementi
-    const napraviTablicu = function (po = [], id,naslov="") {
+    
+import { napraviTablicu } from "./prezentacija.js";
 
-        let tablica = document.createElement('table');
-        const caption = document.createElement("caption");
-        caption.textContent=naslov;
-        tablica.appendChild(caption);
-
-        
-        tablica.setAttribute('class', 'tablica');
-        // tablica.setAttribute('id',id);
-        let tr = document.createElement('tr');
-
-        let th = document.createElement('th');
-        let th1 = document.createElement('th');
-        th.textContent = 'Slika naslov';
-        tr.appendChild(th);
-        th1.textContent = 'udio žila i kapilara u%';
-        tr.appendChild(th1);
-        tablica.appendChild(tr);
-
-        po.forEach(x => {
-            let trp = document.createElement('tr');
-            let td = document.createElement('td');
-            let td1 = document.createElement('td');
-            td.innerText = x.naslov;
-            trp.appendChild(td);
-            td1.innerText = x.prosjek;
-            trp.appendChild(td1);
-            tablica.appendChild(trp);
-
-        })
-
-        return tablica;
-
-
-
-    }
-
-
-    const napraviTablicuObrade = function () {
-        kontejnerTablica.style.display = 'block';
-        while (kontejnerTablica.firstChild) {
-            kontejnerTablica.removeChild(kontejnerTablica.firstChild);
-        }
-        //console.log('obrada',obrada);
-        let odstupanjeOdSredineDeep = obrada.deepObrada.odstupanjeOdSredine;
-        let aritmetičkaSredinaDeep = obrada.deepObrada.aritmetičkaSredina;
-        let medijanDeep = obrada.deepObrada.medijan;
-        let raspon1Deep = obrada.deepObrada.raspon[0];
-        let raspon2Deep = obrada.deepObrada.raspon[1];
-        let varijancaDeep = obrada.deepObrada.varijanca;
-        let devijacijaDeep = obrada.deepObrada.standardnaDevijacija;
-        let rsdDeep = obrada.deepObrada.rsd;
-        let najmanjielemDeep = obrada.deepObrada.najmanji.naslov;
-        if (najmanjielemDeep === undefined) najmanjielemDeep = " - ";
-        let devijacijaBezNajmanjeg = obrada.deepObrada.najmanji.naslov;
-        let standarDevBezNajmanjegD = obrada.deepObrada.standarDevBezNajmanjeg;
-        let rsdDepB = ((Number(standarDevBezNajmanjegD) / Number(aritmetičkaSredinaDeep)) * 100).toFixed(2);
-        if (isNaN(rsdDepB)) rsdDepB = 0;
-
-
-        let aritmetičkaSredinaF = obrada.superfObrada.aritmetičkaSredina;
-        let medinaF = obrada.superfObrada.medijan;
-        let raspon1F = obrada.superfObrada.raspon[0];
-        let raspon2F = obrada.superfObrada.raspon[1];
-        let odstupanjeOdSredineF = obrada.superfObrada.odstupanjeOdSredine;
-        let varijancaF = obrada.superfObrada.varijanca;
-        let rsdF = obrada.superfObrada.rsd;
-        let najmanjielemF = obrada.superfObrada.najmanji.naslov;
-
-        if (najmanjielemF === undefined) najmanjielemF = " - ";
-
-        let standarDevBezNajmanjegF = obrada.superfObrada.standarDevBezNajmanjeg;
-        let rsdFB = ((Number(standarDevBezNajmanjegF) / Number(aritmetičkaSredinaF)) * 100).toFixed(2);
-        if (isNaN(rsdFB)) rsdFB = 0;
-        // if(obrada.superfObrada.varijanca==!NaN){
-        //     varijancaF = obrada.superfObrada.varijanca;
-        // }
-        //(obrada.superfObrada.varijanca===NaN)?"":obrada.superfObrada.varijanca;
-        let devijacijaF = obrada.superfObrada.standardnaDevijacija ? obrada.superfObrada.standardnaDevijacija : "";
-
-        //console.log('var',obrada.superfObrada.varijanca )
-
-        let obradaDeep = `<h4> Aritmetička sredina ${aritmetičkaSredinaDeep} </h4>
-<h4> Medijan ${medijanDeep} </h4>
-<h4> Raspon ${raspon1Deep} - ${raspon2Deep} </h4>
-<h4> Prosječno odstupanje od aritmetičke sredine ${odstupanjeOdSredineDeep} </h4>
-<h4> Varijanca ${varijancaDeep} </h4>
-<h4> Standardna devijacija ${devijacijaDeep} </h4>
-<h4> Relativna standardna devijacija ${rsdDeep} </h4>
-<h4> Najmanja gustoća žila ${najmanjielemDeep} </h4>
-<h4> Standardna devijacija bez najmanjeg elementa ${standarDevBezNajmanjegD}  RSD ${rsdDepB} </h4>
-`
-        let obradaSuper = `<h4> Aritmetička sredina ${aritmetičkaSredinaF} </h4>
-<h4> Medijan ${medinaF} </h4>
-<h4> Raspon ${raspon1F} - ${obrada.superfObrada.raspon[1]} </h4>
-<h4> Prosječno odstupanje od aritmetičke sredine ${odstupanjeOdSredineF} </h4>
-<h4> Varijanca ${varijancaF} </h4>
-<h4> Standardna devijacija ${devijacijaF} </h4>
-<h4> Relativna standardna devijacija ${rsdF} </h4>
-<h4> Najmanja gustoća žila ${najmanjielemF} </h4>
-<h4> Standardna devijacija bez najmanjeg elementa ${standarDevBezNajmanjegF}  RSD ${rsdFB} </h4>
-`
-        kontejnerTablica.insertAdjacentHTML('afterBegin', ' <h2>Obrada DEEP</h2>');
-        kontejnerTablica.appendChild(napraviTablicu(obrada.deep, 'pr'));
-        kontejnerTablica.insertAdjacentHTML('beforeEnd', obradaDeep);
-        kontejnerTablica.insertAdjacentHTML('beforeEnd', ' <h2>Obrada superficijal</h2>');
-        kontejnerTablica.appendChild(napraviTablicu(obrada.superf, 'pr'));
-        kontejnerTablica.insertAdjacentHTML('beforeEnd', obradaSuper);
-
-
-    }
-
-
-
-    // vewrzija 2
+  
 
     const napraviTablicuObrade2 = function(obrada={}){
-        //console.log('tablica obrade',obrada);
-    
-    //console.log('kon',kontejnerTablica);
-
-
+        
    
-    kontejnerTablica.style.display = 'block';
+    //kontejnerTablica.style.display = 'block';
 while (kontejnerTablica.firstChild) {
     kontejnerTablica.removeChild(kontejnerTablica.firstChild);
 }
@@ -254,10 +138,10 @@ let obradaSuper = `
 
 `
 
-kontejnerTablica.appendChild(napraviTablicu(obrada.deep, 'pr','Obrada DEEP'));
+kontejnerTablica.appendChild(napraviTablicu(obrada.deep,'Obrada DEEP'));
 kontejnerTablica.insertAdjacentHTML('beforeEnd', obradaDeep);
 
-kontejnerTablica.appendChild(napraviTablicu(obrada.superf, 'pr',"Obrada SUPERFICIJAL"));
+kontejnerTablica.appendChild(napraviTablicu(obrada.superf,"Obrada SUPERFICIJAL"));
 kontejnerTablica.insertAdjacentHTML('beforeEnd', obradaSuper);
 
 
