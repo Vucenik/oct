@@ -5,241 +5,50 @@
     
 import { napraviTablicuObrade2 } from "./prezentacija.js";
 import {napraviRGB,dajProsjekRgb ,rafiniraj, prosjekRafinirani,napraviObjekt, daliJeImeDeepiliSuperficijal,frekvencijePromise } from "./pomocne_funkcije.js";
-import { arimetickaSredina,medijan, prosAbOdstOdAritSred,varijanca ,stanDevijacija, dajBrojelemenata,relativnoStandardnoOdstupanje } from "./statisticke_funkcije.js";
+import { obradaPodataka} from "./statisticke_funkcije.js";
+import { nacrtajGrafCanvas } from "./graf.js";
   
  
-
-
-
-   
-
-    ///*******funkcija statističke obrade unos polje vrijednosti izlaz objekt sa vrijednostima
-
-    const napraviObradu = function (deepPolje = [], x = deepPolje[0]) {
-        let deepBezPrvog = deepPolje.slice(1, deepPolje.length);
-        if (deepPolje.length <= 1) {
-            deepBezPrvog = [0];
-        };
-        const aritmetičkaSredina =arimetickaSredina(deepPolje);
-       // const odstupanjeOdSredine = prosAbOdstOdAritSred(deepPolje, arimetickaSredina);
-        const odstupanjeOdSredine = prosAbOdstOdAritSred(deepPolje, aritmetičkaSredina);
-      const   varijanca_izracun= varijanca(deepPolje, aritmetičkaSredina);
-
-        return {
-            brojElemenata:dajBrojelemenata(deepPolje),
-            //aritmetičkaSredina: arimetickaSredina(deepPolje),
-            aritmetičkaSredina,
-            medijan: medijan(deepPolje),
-            raspon: [deepPolje[0], deepPolje[deepPolje.length - 1]],
-          //  odstupanjeOdSredine: prosAbOdstOdAritSred(deepPolje, this.arimetickaSredina), // popraviti poslije
-            //odstupanjeOdSredine: prosAbOdstOdAritSred(deepPolje, arimetickaSredina(deepPolje)),
-            odstupanjeOdSredine,
-            //varijanca: varijanca(deepPolje, this.aritmetičkaSredina), //popraviti poslije
-            //varijanca: varijanca(deepPolje, arimetickaSredina(deepPolje)),
-            varijanca:varijanca_izracun,
-            standardnaDevijacija: stanDevijacija(deepPolje),
-            // frekvencija:frekvencija(deepPolje),
-            //grupiranjeFrekvencija:grupiranjeFrekvencija(deepPolje,5),
-            najmanji: x,//deep[0]|| deepPolje[0],
-            rsd: relativnoStandardnoOdstupanje(deepPolje),
-            standarDevBezNajmanjeg: stanDevijacija(deepBezPrvog)
-
-
-        };
-    }
-
-
-    //funkcija obrada podataka ulazni parametar je polje stanje
-    const obradaPodataka = function (sta = []) {
-
-        let deep = sta.filter(x => x.deep).sort((a, b) => a.prosjek - b.prosjek);
-        let superf = sta.filter((x => x.superf)).sort((a, b) => a.prosjek - b.prosjek);
-
-        let deepPolje = deep.length > 0 ? deep.map(x => x.prosjek) : [0];
-        let superPolje = superf.length > 0 ? superf.map(x => x.prosjek) : [0];
-
-        let deepObrada = napraviObradu(deepPolje, deep[0]);
-        let superfObrada = napraviObradu(superPolje, superf[0]);
-
-
-
-        return {
-            deep,
-            superf,
-            deepObrada,
-            superfObrada
-        }
-
-    }
-
-
-
-    ////***********************crtanje grafa******************************
-
-
-    
-const nacrtajGrafCanvas = function(polje = []){
-    //console.log('graf',polje);
-    if ( polje.length>0){
-    let zadnji = polje[polje.length-1];
-    //console.log('zadnji',zadnji);
-    let z ;
-   if( zadnji===undefined){
-       z=0;
-   }else{
-       z=zadnji[zadnji.length-1];
-   }
-   //console.log('z',z);
-    let raspon = [polje[0][0],z];
- const razmak = 5;
-let frek =Number( raspon[0]);
-//console.log('frek',frek)
-
-const boje = ["lightblue","lightgreen","pink","silver","lightblue","lightgreen","pink","silver","lightblue","lightgreen","pink","silver"]
-
-let razlika = Number(raspon[1])-Number(raspon[0]);
-//console.log('razlika',razlika)
-let sirina = Math.ceil(razlika/ razmak);
-if(sirina ===0) sirina =1;
-//console.log('sirana',sirina)
-//console.log('polje',polje,'raspon',raspon)
-let faktor =Math.ceil( 240/razlika);
-//console.log('faktor',faktor);
-let brojStpoaca = polje.length;
-let korak = Math.ceil( razlika/brojStpoaca)*faktor;
-//console.log('korak',korak);
-
-let can2 = document.createElement('canvas');
-    can2.setAttribute('width','300px');
-    can2.setAttribute('height','300px');
-
-
-
-let graf = can2.getContext("2d");
-
-graf.strokeRect(0,0,300,300)
-
-
-
-let xGraf = 10;
-let yGraf = 0;
-let najveciStupac = polje.reduce((rez,val)=>{
-   return rez<val.length?val.length:rez;
-
-},-Infinity)
-//console.log('najveci',najveciStupac);
-let brojac = 0
-
-
-const crtajGraf = function(x){
-let visina = (x.length/najveciStupac)*300*0.8;
-//console.log('visina',visina)
-yGraf= 299-visina;
-graf.fillStyle= boje[brojac] || "blue";
-graf.fillRect(xGraf,yGraf,30,visina);
-graf.save();
-graf.font="20px Times";
-graf.fillStyle = 'red';
-graf.translate(xGraf+10,80)
-//graf.rotate(90*Math.PI/180);
-    graf.fillText(x.length,0,0)
-    graf.restore();
-    graf.save();
-graf.font="10px Times";
-graf.fillStyle = 'red';
-graf.translate(xGraf+5,290)
-//graf.rotate(90*Math.PI/180);
-    graf.fillText(x[0],0,0)
-    graf.restore(); 
-
-xGraf = xGraf +korak;
-brojac++
-frek=frek+Number(sirina);
-//console.log('frek2',frek,'sirina',sirina);
-}
-
-
-polje.forEach(crtajGraf)
-return can2;
-    }
-    else {
-        return document.createElement('div');
-    }
- }
-
-
-
  
 
 //
-const dajDep = function (x=[],y=1){
+const dajDep = function (x=[],y=1,kontejner){
 
 let mapx = x.deep.map((x)=>x.prosjek);
 frekvencijePromise(mapx,y)
        .then(x=>{
-
-          // console.log('x',x);
-          // console.log('stanjekn1',stanje);
-          
-          // console.log('stanjekn2',stanje);
+      
         let graf = nacrtajGrafCanvas(x);
-        kontejnerTablica.insertAdjacentHTML("beforeEnd","<h3>deep</h3>")
-       // kontejnerTablica.appendChild(graf);
-        kontejnerTablica.insertAdjacentElement('beforeEnd',graf);
-        //console.log('deep frekvencija',x, 'raspon ', rasponD)
+        kontejner.insertAdjacentHTML("beforeEnd","<h3>deep</h3>")
+       
+        kontejner.insertAdjacentElement('beforeEnd',graf);
+      
         }
        )
 
-/*
+};
 
-x.deep.map((x)=>x.prosjek)
-    //    .then(x=>frekvencija(x))
-    //    .then(x=>grupiranjeFrekvencijaP(x,3))
-    Promise.resolve(x)
-    .then(x=>frekvencijePromise(x,8))
-       .then(x=>{
-
-          // console.log('x',x);
-          // console.log('stanjekn1',stanje);
-          
-          // console.log('stanjekn2',stanje);
-        let graf = nacrtajGrafCanvas(x);
-        kontejnerTablica.insertAdjacentHTML("beforeEnd","<h3>deep</h3>")
-       // kontejnerTablica.appendChild(graf);
-        kontejnerTablica.insertAdjacentElement('beforeEnd',graf);
-        console.log('deep frekvencija',x, 'raspon ', rasponD)}
-       )
-*/
-}
-
-const dajSuperf = function (x=[],y=1){
+const dajSuperf = function (x=[],y=1,kontejner){
 let mapx= x.superf.map((x)=>x.prosjek);
 
        frekvencijePromise(mapx,y)
        .then(x=>{
         let graf = nacrtajGrafCanvas(x);
-        kontejnerTablica.insertAdjacentHTML("beforeEnd","<h3>superficijal</h3>")
-       // kontejnerTablica.appendChild(graf);
-        kontejnerTablica.insertAdjacentElement('beforeEnd',graf);
-       // console.log('deep frekvencija',x, 'raspon ', rasponD)
+        kontejner.insertAdjacentHTML("beforeEnd","<h3>superficijal</h3>")
+      
+        kontejner.insertAdjacentElement('beforeEnd',graf);
+     
         }
        )
 
 }
 
 
-const updateStanje = function(y=1){
-//console.log ('rststanje',stanje)
-//čitaj sttanje
-// iteriraj kroz stanje
-// za svako stanje crtaj view
-// let proba = [...obrada];
-// console.log('update st pr',proba);
-
-    napraviTablicuObrade2(obrada,kontejnerTablica);
-    dajDep(obrada,y);
-    dajSuperf(obrada,y);
-klasaKlizaci.style.display = "block";
+const updateStanje = function(y=1,kontejner,klizac){
+    napraviTablicuObrade2(obrada,kontejner);
+    dajDep(obrada,y,kontejner);
+    dajSuperf(obrada,y,kontejner);
+klizac.style.display = "block";
 
 }
 
@@ -276,7 +85,7 @@ detalji.insertAdjacentHTML('afterbegin',"<ul><li>oznaka slike</li><li>udio žila
     linkObrada.addEventListener('click',function(){
         if(obrada.deep||obrada.superf){
       // console.log('obrad',obrada.deep.length,'super',obrada.superf);
-        updateStanje();
+        updateStanje(1,kontejnerTablica,klasaKlizaci);
       klasaKlizaci.style.display = "block";
         }
     })
@@ -290,7 +99,7 @@ detalji.insertAdjacentHTML('afterbegin',"<ul><li>oznaka slike</li><li>udio žila
     slider.addEventListener("change",e=>{
        // console.log("value",this.value);
         brojacSlider.innerHTML = e.currentTarget.value;
-        updateStanje(e.currentTarget.value);
+        updateStanje(e.currentTarget.value,kontejnerTablica,klasaKlizaci);
     })
 
     // id tablica

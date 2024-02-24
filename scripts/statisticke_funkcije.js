@@ -81,3 +81,55 @@
     };
 
 
+    ///*******funkcija statističke obrade unos polje vrijednosti izlaz objekt sa vrijednostima
+
+   export  const napraviObradu = function (deepPolje = [], x = deepPolje[0]) {
+        let deepBezPrvog = deepPolje.slice(1, deepPolje.length);
+        if (deepPolje.length <= 1) {
+            deepBezPrvog = [0];
+        };
+        const aritmetičkaSredina =arimetickaSredina(deepPolje);
+            const odstupanjeOdSredine = prosAbOdstOdAritSred(deepPolje, aritmetičkaSredina);
+      const   varijanca_izracun= varijanca(deepPolje, aritmetičkaSredina);
+
+        return {
+            brojElemenata:dajBrojelemenata(deepPolje),
+            aritmetičkaSredina,
+            medijan: medijan(deepPolje),
+            raspon: [deepPolje[0], deepPolje[deepPolje.length - 1]],
+           odstupanjeOdSredine,
+            varijanca:varijanca_izracun,
+            standardnaDevijacija: stanDevijacija(deepPolje),
+            najmanji: x,
+            rsd: relativnoStandardnoOdstupanje(deepPolje),
+            standarDevBezNajmanjeg: stanDevijacija(deepBezPrvog)
+
+
+        };
+    }
+
+
+
+
+    //funkcija obrada podataka ulazni parametar je polje stanje
+    export const obradaPodataka = function (sta = []) {
+
+        const deep = sta.filter(x => x.deep).sort((a, b) => a.prosjek - b.prosjek);
+        const superf = sta.filter((x => x.superf)).sort((a, b) => a.prosjek - b.prosjek);
+
+        const deepPolje = deep.length > 0 ? deep.map(x => x.prosjek) : [0];
+        const superPolje = superf.length > 0 ? superf.map(x => x.prosjek) : [0];
+
+        const deepObrada = napraviObradu(deepPolje, deep[0]);
+        const superfObrada = napraviObradu(superPolje, superf[0]);
+
+
+
+        return {
+            deep,
+            superf,
+            deepObrada,
+            superfObrada
+        }
+
+    }
