@@ -86,7 +86,7 @@ detalji.insertAdjacentHTML('afterbegin',"<ul><li>oznaka slike</li><li>udio žila
         if(obrada.deep||obrada.superf){
       // console.log('obrad',obrada.deep.length,'super',obrada.superf);
         updateStanje(1,kontejnerTablica,klasaKlizaci);
-      klasaKlizaci.style.display = "block";
+      //klasaKlizaci.style.display = "block";
         }
     })
 
