@@ -18,9 +18,8 @@ let mapx = x.deep.map((x)=>x.prosjek);
 frekvencijePromise(mapx,y)
        .then(x=>{
       
-        let graf = nacrtajGrafCanvas(x);
-        kontejner.insertAdjacentHTML("beforeEnd","<h3>deep</h3>")
-       
+        let graf = nacrtajGrafCanvas(x,"DEEP");
+           
         kontejner.insertAdjacentElement('beforeEnd',graf);
       
         }
@@ -33,9 +32,8 @@ let mapx= x.superf.map((x)=>x.prosjek);
 
        frekvencijePromise(mapx,y)
        .then(x=>{
-        let graf = nacrtajGrafCanvas(x);
-        kontejner.insertAdjacentHTML("beforeEnd","<h3>superficijal</h3>")
-      
+        let graf = nacrtajGrafCanvas(x,"SUPERFICIAL");
+           
         kontejner.insertAdjacentElement('beforeEnd',graf);
      
         }
@@ -48,7 +46,7 @@ const updateStanje = function(y=1,kontejner,klizac){
     napraviTablicuObrade2(obrada,kontejner);
     dajDep(obrada,y,kontejner);
     dajSuperf(obrada,y,kontejner);
-klizac.style.display = "block";
+klizac.classList.add("pokazi_klizac");
 
 }
 
@@ -94,7 +92,7 @@ detalji.insertAdjacentHTML('afterbegin',"<ul><li>oznaka slike</li><li>udio žila
     const slider = document.getElementById('slider');
     const klasaKlizaci = document.querySelector(".klizac");
 
-   klasaKlizaci.style.display ="none";
+  // klasaKlizaci.style.display ="none";
     const brojacSlider = document.getElementById("brojac__slider")
     slider.addEventListener("change",e=>{
        // console.log("value",this.value);

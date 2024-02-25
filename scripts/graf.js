@@ -2,7 +2,11 @@
 
 
     
- export const nacrtajGrafCanvas = function(polje = []){
+ export const nacrtajGrafCanvas = function(polje = [],naslov=""){
+    const figure= document.createElement("figure");
+    const caption = document.createElement("figcaption");
+    caption.textContent=naslov;
+
 
     if ( polje.length>0){
     const zadnji = polje[polje.length-1];
@@ -20,7 +24,7 @@ let frek =Number( raspon[0]);
 const boje = ["lightblue","lightgreen","pink","silver","lightblue","lightgreen","pink","silver","lightblue","lightgreen","pink","silver"]
 
 const razlika = Number(raspon[1])-Number(raspon[0]);
-const sirina = Math.ceil(razlika/ razmak);
+let sirina = Math.ceil(razlika/ razmak);
 if(sirina ===0) sirina =1;
 const faktor =Math.ceil( 240/razlika);
 const brojStpoaca = polje.length;
@@ -70,8 +74,12 @@ frek=frek+Number(sirina);
 }
 
 
-polje.forEach(crtajGraf)
-return can2;
+polje.forEach(crtajGraf);
+
+
+figure.appendChild(caption);
+figure.appendChild(can2);
+return figure;
     }
     else {
         return document.createElement('div');
