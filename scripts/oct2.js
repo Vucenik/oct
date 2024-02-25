@@ -171,8 +171,13 @@ detalji.insertAdjacentHTML('afterbegin',"<ul><li>oznaka slike</li><li>udio žila
                       
                         img.src = reader.result;
                         // kada se učita img element dalje se obražuje kao canvas element
-                        img.onload = () => {
+                        return new Promise((resolve,reject)=>{
+                            img.onload=()=>resolve(img);
+                            img.onerror=(err)=>reject(err);
+                        })
+                        .then(img=>{
 
+                       
                             spiner.innerHTML = `${brojFajlova} 🐇`;
                             if (Number(brojFajlova) === 0 || (Number(brojFajlova)) === 1) {
                                 setTimeout(() => spiner.innerHTML = `🐜 `, 5000)
@@ -222,11 +227,8 @@ detalji.insertAdjacentHTML('afterbegin',"<ul><li>oznaka slike</li><li>udio žila
                            
                             prosjek = prosjek.toFixed(2);
                             let rGb = RGBprosjek;  // Math.ceil( dajProsjekRgb(indexPolje)[0],2);
-                            // podaci ispod slike
-                         
+                                                
                           
-                            // slika inverznih boja isključeno
-                            //ctx.putImageData(obData,0,0);
 
                             // canvas element sa crveno zelenom slikom iz originala
                             ctx1.putImageData(obData1, 0, 0);
@@ -255,7 +257,7 @@ detalji.insertAdjacentHTML('afterbegin',"<ul><li>oznaka slike</li><li>udio žila
 
                         }
 
-
+                    )
                     
                 })
                 .catch(e=>console.log(e))
