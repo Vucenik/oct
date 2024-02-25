@@ -176,3 +176,54 @@ kontejnerTablica.insertAdjacentHTML('beforeEnd', obradaSuper);
 
 
 }
+
+export const napravi_slike=(kontejner,podaci={img:"",rGb:"",prosjek:"",fileName:"",can1:"",observer:""})=>{
+  //  detalji.insertAdjacentHTML('afterbegin',"<ul><li>oznaka slike</li><li>udio žila i kapilara u %</li><li>RGB </li><li></li></ul>");
+
+  const ul =document.createElement('ul');
+  const div = document.createElement('div');
+  div.className="kontejner_dl";
+  const dl = document.createElement('div');
+
+  const li1=document.createElement('li');
+  const li2=document.createElement('li');
+  const li3=document.createElement('li');
+  const li4=document.createElement('li');
+  const gumb= document.createElement('button');
+  gumb.className="gumb_pokazi";
+  gumb.addEventListener('click',e=>{
+      e.currentTarget.classList.toggle("gumb_dolje");
+      e.currentTarget.parentElement.parentElement.nextElementSibling.classList.toggle('pokazi_dl');
+
+  })
+  li4.appendChild(gumb);
+  const figure1 = document.createElement("figure");
+  const figure2 = document.createElement("figure");
+  const figcaption= document.createElement("figcaption");
+  const p1 = document.createElement("p");
+  const p2 = document.createElement("p");
+  
+
+
+  figure1.appendChild(podaci.img);
+  dl.appendChild(figure1);/*  */
+  p1.textContent="RGB prosjek = "+podaci.rGb ;
+  p2.textContent="Relativni postotak žila = "+podaci.prosjek+" %";
+  li3.textContent=podaci.rGb;
+  figcaption.appendChild(p1);
+  figcaption.appendChild(p2);
+  li1.textContent=podaci.fileName;
+  li2.textContent=podaci.prosjek+" %";
+  ul.appendChild(li1);
+  ul.appendChild(li2);
+  ul.appendChild(li3);
+  ul.appendChild(li4);
+kontejner.appendChild(ul);
+figure2.appendChild(podaci.can1);
+figure2.appendChild(figcaption);
+ dl.appendChild(figure2);
+div.appendChild(dl);
+kontejner.appendChild(div);
+podaci.observer.observe(dl);
+
+}

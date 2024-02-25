@@ -147,4 +147,32 @@ export const napraviRGB = (x = []) => {
         
         })
         }
+
+
+        ///skidanje tablice obrade u json formatu
+        export const skini_obradu=obrada=>e => {
+
+
+            let txt;
+            const datum = Date.now();
+            let ime = prompt("Unesite ime datoteke", "Datoteka");
+            if (ime == null || ime == "") {
+                return;
+            } else {
+                txt = ime + " " + datum + " JSON.json";
+                link.download = txt;
+            }
+    
+             
+            const ob = Object.assign({}, obrada);
+           
+              
+            const obJson = JSON.stringify(ob);
+               
+            const blob1 = new Blob([obJson], { type: 'text/plain' });
+            link.href = URL.createObjectURL(blob1);
+            URL.revokeObjectURL(link.herf);
+    
+        };
+    
         
