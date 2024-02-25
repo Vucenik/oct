@@ -130,7 +130,7 @@ detalji.insertAdjacentHTML('afterbegin',"<ul><li>oznaka slike</li><li>udio žila
         setTimeout(window.requestAnimationFrame(() => spiner.innerHTML = `${brojFajlova} 🐇`), 200);
         // selektira File input element
 
-        // čita vrijednost url selektiranog file
+        // čita vrijednost url selektiranog file i rekurzivno poziva samu sebe
            const napraviFunkciju = function () {
             if(brojFajlova===-1)return;
           
