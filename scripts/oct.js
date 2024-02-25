@@ -146,27 +146,15 @@ detalji.insertAdjacentHTML('afterbegin',"<ul><li>oznaka slike</li><li>udio žila
 
     // selektor inputa file
     const fileInput = document.getElementById('file');
-  // fileInput.style.display = "none";
+  
 
     // selekcija naslova za prikaz selektiranog elementa
-    //const prikazDat = document.getElementById('prikazdat');
+   
     fileInput.addEventListener('change', () => {
-      // prikazDat.innerHTML = "";
-    //    prikazDat.innerHTML = fileInput.files[0].name;
+     
         gumb();
     })
-    //  izaberi datoteku malo drukčije
-   /* const izaberi = document.getElementById('izaberi');
-    izaberi.addEventListener('click', e => {
-
-        if (fileInput) {
-            fileInput.click();
-            // gumb();
-
-        }
-    }, false)
-
-*/
+   
 
 
     /////// read filet ////
@@ -182,7 +170,7 @@ detalji.insertAdjacentHTML('afterbegin',"<ul><li>oznaka slike</li><li>udio žila
 
         // čita vrijednost url selektiranog file
         // console.log ('fileinput',fileInput.files);
-        let borojFile = fileInput.files.length - 1;
+       // let borojFile = fileInput.files.length - 1;
         const napraviFunkciju = function () {
             if(brojFajlova===-1)return;
             //// for (let ii = 0; ii < fileInput.files.length; ii++) {
@@ -266,7 +254,7 @@ detalji.insertAdjacentHTML('afterbegin',"<ul><li>oznaka slike</li><li>udio žila
                             if (Number(brojFajlova) === 0 || (Number(brojFajlova)) === 1) {
                                 setTimeout(() => spiner.innerHTML = `🐜 `, 5000)
                             }
-                            borojFile--;
+                            //borojFile--;
                             // original slika se meće na stranicu
                             kontejner.appendChild(img);
                             figure1.appendChild(img);
