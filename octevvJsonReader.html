@@ -1,0 +1,829 @@
+<!DOCTYPE html>
+<html lang="hr">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./css/oct.css">
+   
+    
+   
+   
+    <link rel="icon" href="favicon.svg" type="image/svg+xml">
+    <link rel="shortcut icon" href="favicon.ico">
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+
+    <script defer src="./scripts/oct2_reader.js" type="module"></script>
+    <title>OCT Angio json reader VV</title>
+</head>
+
+<body>
+    <div class="vanjski_kontejner">
+        <header>
+            <nav>
+                <ul>
+                    <li> 
+                         <form action="">
+
+                            <label for="jsonFile">
+                                Izaberi datoteku
+                            </label>
+        
+                            <input type="file" name="JSON" id="jsonFile" accept=".json">
+                  
+                    </form>
+              
+                
+                </li>
+                    <li>  <a href="#" id='svi__fajlovi' class="gumb">Obrada svih fajlova</a></li>
+                   
+                </ul>
+
+       <!--<a href="#" id='izaberi' class="gumb">Izaberi datoteku</a>
+        <a href="#" id='svi__fajlovi' class="gumb">Obrada svih fajlova</a>--> 
+
+  
+       
+        <a href="#naslov">   
+            <span id="spiner">🐢</span>
+            </a>   
+    </nav>
+
+</header>
+  
+<main>
+    <h1 id="naslov">OCT ANGIO  READER VV</h1>
+    <section >
+        <div class="kontejner" id="kontejnertablica">
+         
+        </div>
+        <form class="klizac">
+           <legend>Raspon frekvencija u rasponu od <span id="brojac__slider">1</span></legend>
+         
+     <label for="">
+       <input type="range" name="korak" id="slider" min="1" max="10" step = "1" value="1">
+     </label>  
+       </form>
+       </section>
+       <!--
+    <div class="kontejner" id="kontejnerTablica"></div>
+    <div class="kontejner" id="grafovi"></div>
+    <div class="klizac" id="klizac">
+        <h2>Raspon frekvencija</h2>
+        <h3 id="brojac__slider">1</h3>
+        <input type="range" name="korak" id="slider" min="1" max="10" step="1" value="1">
+    </div>
+
+    <div class="klizac" id="klizac2">
+        <h2>Raspon frekvencija</h2>
+        <h3 id="brojac__slider2">1</h3>
+        <input type="range" name="korak" id="slider2" min="1" max="10" step="1" value="1">
+    </div>
+    -->
+</main>
+<footer>
+    <a href="#naslov">  OCT Angio analizator VV 2024 </a> 
+   </footer>
+   </div><!--kraj vanjski kontejner-->
+</body>
+<script>
+   /*  const napraviTablicu = function (po = [], id) {
+
+        let tablica = document.createElement('table');
+        tablica.setAttribute('class', 'tablica');
+        // tablica.setAttribute('id',id);
+        let tr = document.createElement('tr');
+
+        let th = document.createElement('th');
+        let th1 = document.createElement('th');
+        th.textContent = 'Slika naslov';
+        tr.appendChild(th);
+        th1.textContent = 'udio žila i kapilara u%';
+        tr.appendChild(th1);
+        tablica.appendChild(tr);
+
+        po.forEach(x => {
+            let trp = document.createElement('tr');
+            let td = document.createElement('td');
+            let td1 = document.createElement('td');
+            td.innerText = x.naslov;
+            trp.appendChild(td);
+            td1.innerText = x.prosjek;
+            trp.appendChild(td1);
+            tablica.appendChild(trp);
+
+        })
+
+        return tablica;
+
+
+
+    } */
+
+
+/* 
+    const napraviTablicuObrade = function (obrada = {}) {
+
+        //     while (kontejnerTablica.firstChild) {
+        //     kontejnerTablica.removeChild(kontejnerTablica.firstChild);
+        // }
+        //  console.log('kon',kontejnerTablica);
+
+
+
+        kontejnerTablica.style.display = 'block';
+
+        //console.log('obrada',obrada);
+        let odstupanjeOdSredineDeep = obrada.deepObrada.odstupanjeOdSredine;
+        let aritmetičkaSredinaDeep = obrada.deepObrada.aritmetičkaSredina;
+        let medijanDeep = obrada.deepObrada.medijan;
+        let raspon1Deep = obrada.deepObrada.raspon[0];
+        let raspon2Deep = obrada.deepObrada.raspon[1];
+        let varijancaDeep = obrada.deepObrada.varijanca;
+        let devijacijaDeep = obrada.deepObrada.standardnaDevijacija;
+        let rsdDeep = obrada.deepObrada.rsd;
+
+
+        let aritmetičkaSredinaF = obrada.superfObrada.aritmetičkaSredina;
+        let medinaF = obrada.superfObrada.medijan;
+        let raspon1F = obrada.superfObrada.raspon[0];
+        let raspon2F = obrada.superfObrada.raspon[1];
+        let odstupanjeOdSredineF = obrada.superfObrada.odstupanjeOdSredine;
+        let varijancaF = obrada.superfObrada.varijanca;
+        let rsdF = obrada.superfObrada.rsd;
+        // if(obrada.superfObrada.varijanca==!NaN){
+        //     varijancaF = obrada.superfObrada.varijanca;
+        // }
+        //(obrada.superfObrada.varijanca===NaN)?"":obrada.superfObrada.varijanca;
+        let devijacijaF = obrada.superfObrada.standardnaDevijacija ? obrada.superfObrada.standardnaDevijacija : "";
+
+        //console.log('var',obrada.superfObrada.varijanca )
+
+        let obradaDeep = `<h4> Aritmetička sredina ${aritmetičkaSredinaDeep} </h4>
+<h4> Medijan ${medijanDeep} </h4>
+<h4> Raspon ${raspon1Deep} - ${raspon2Deep} </h4>
+<h4> Prosječno odstupanje od aritmetičke sredine ${odstupanjeOdSredineDeep} </h4>
+<h4> Varijanca ${varijancaDeep} </h4>
+<h4> Standardna devijacija ${devijacijaDeep} </h4>
+<h4> Relativna standardna devijacija ${rsdDeep} </h4>
+`
+        let obradaSuper = `<h4> Aritmetička sredina ${aritmetičkaSredinaF} </h4>
+<h4> Medijan ${medinaF} </h4>
+<h4> Raspon ${raspon1F} - ${obrada.superfObrada.raspon[1]} </h4>
+<h4> Prosječno odstupanje od aritmetičke sredine ${odstupanjeOdSredineF} </h4>
+<h4> Varijanca ${varijancaF } </h4>
+<h4> Standardna devijacija ${devijacijaF} </h4>
+<h4> Relativna standardna devijacija ${rsdF} </h4>
+`
+        kontejnerTablica.insertAdjacentHTML('afterBegin', ' <h2>Obrada DEEP</h2>');
+        kontejnerTablica.appendChild(napraviTablicu(obrada.deep, 'pr'));
+        kontejnerTablica.insertAdjacentHTML('beforeEnd', obradaDeep);
+        kontejnerTablica.insertAdjacentHTML('beforeEnd', ' <h2>Obrada superficijal</h2>');
+        kontejnerTablica.appendChild(napraviTablicu(obrada.superf, 'pr'));
+        kontejnerTablica.insertAdjacentHTML('beforeEnd', obradaSuper);
+
+
+    }
+
+
+
+
+    const arimetickaSredina = function (po = []) {
+        let zbroj = po.reduce((ak, val) => {
+            return ak + Number(val);
+
+        }, 0)
+        let N = po.length || 1;
+        return (zbroj / N).toFixed(2)
+    }
+    //console.log('aritmetička sredina',arimetickaSredina(polje));
+
+    const medijan = function (po = []) {
+        let po1 = [...po];
+        po1.sort((a, b) => a - b);
+        //console.log('polj',po1);
+        if (po1.length) {
+            let N = po1.length;
+            //  console.log('n',N)
+            let sredina = Math.floor(N / 2);
+            //  console.log('sredina',po1[sredina])
+            // console.log('sredina-1',po1[sredina-1])
+
+            if (N % 2 === 0) {
+                let a = Number(po1[(sredina - 1)]);
+                let b = Number(po1[sredina]);
+                let r = (a + b) / 2;
+
+                return r.toFixed(2);
+            } else {
+
+                return Number(po1[sredina]).toFixed(2);
+            }
+
+
+        }
+    }
+    //console.log('medijan',medijan(polje))
+
+    const raspon = function (po = []) {
+        let sortirano = [...po];
+        //console.log('sort',po,sortirano)
+        sortirano.sort((a, b) => a - b);
+        // console.log('sort',po,sortirano)
+
+        return (Number(sortirano[(sortirano.length - 1)]) - Number(sortirano[0])).toFixed(2);
+    }
+
+    //console.log('raspon',raspon(polje))
+
+    const prosAbOdstOdAritSred = function (po = [], aritSredina = arimetickaSredina(po)) {
+        //let aritSredina = arimetickaSredina(po);
+        let odstupanje = po.reduce((ak, val) => {
+            return ak + Math.abs(Number(val) - aritSredina);
+        }, 0)
+        return (odstupanje / po.length).toFixed(2);
+
+    }
+
+    //console.log('prosječno odstupanje' ,prosAbOdstOdAritSred(polje))
+
+    const varijanca = function (po = [], aritSredina = arimetickaSredina(po)) {
+        let odstupanjeKvadratno = po.reduce((ak, val) => {
+            return ak + Math.pow((Number(val) - aritSredina), 2);
+
+        }, 0)
+        return (odstupanjeKvadratno / po.length).toFixed(4);
+
+
+    }
+
+    const stanDevijacija = function (po = []) {
+        return (Math.sqrt(varijanca(po))).toFixed(4);
+    }
+
+    //console.log('varijanca',varijanca(polje))
+
+    //console.log('standardna devijacija',stanDevijacija(polje))
+
+
+
+    const frekvencija = function (po = []) {
+        let poSort = [...po].sort((a, b) => a - b);
+        let prvi = poSort[0];
+        let brojac = 0;
+        let poljeFrek = [];
+        //console.log('sortirani ulaz',poSort);
+        const fukObj = function (ime, broj) {
+            return {
+                ime,
+                broj
+            };
+        };
+ 
+        const fukPolje = function (ime, broj) {
+            return [ime, broj];
+        };
+        //izlaz objekt
+
+        
+        poljeFrek = poSort.reduce((ak,val)=>{
+            if(val===prvi){
+                brojac++;
+                if(val===poSort[(poSort.length-1)]){
+                ak.push(fukObj(prvi,brojac));
+              }  
+        
+          }else{
+              ak.push(fukObj(prvi,brojac));
+              brojac=1;
+        
+              prvi = val;
+              if(val===poSort[(poSort.length-1)]){
+                ak.push(fukObj(prvi,brojac));
+              }
+          }
+       
+
+        // izlaz polje
+        poljeFrek = poSort.reduce((ak, val, i) => {
+            if (val === prvi) {
+                brojac++;
+                if (i === (poSort.length - 1)) {
+                    // console.log('fb',fukPolje(prvi,brojac))
+                    ak.push(fukPolje(prvi, brojac));
+                }
+
+            } else {
+                ak.push(fukPolje(prvi, brojac));
+                brojac = 1;
+
+                prvi = val;
+                if (i === (poSort.length - 1)) {
+                    //  console.log('fb',fukPolje(prvi,brojac))
+                    ak.push(fukPolje(prvi, brojac));
+                }
+
+            }
+
+            return ak;
+
+
+        }, []);
+
+        return Promise.resolve(poljeFrek);
+
+    }
+ */
+
+    // const grupiranjeFrekvencijaP = function (po = [], raspon = 1) {
+
+
+    //     //let fren = frekvencija(po);
+    //     let fren = [...po];
+    //     const duzina = fren.length;
+    //     let prvi = fren[0][0];
+    //     let brojac = 0;
+    //     let grupa = [];
+
+    //     // console.log('frenkvencija',fren);
+    //     for (let i = 0; i < duzina - 1; i++) {
+    //         if ((fren[i][0] - prvi) < raspon) {
+    //             brojac = brojac + fren[i][1];
+    //             if (i === duzina - 2) {
+    //                 grupa.push(brojac);
+    //             }
+    //         } else {
+    //             grupa.push(brojac);
+    //             brojac = fren[i][1];
+    //             prvi = fren[i][0];
+
+    //             if (i === duzina - 2) {
+    //                 grupa.push(fren[duzina - 2][1]);
+    //                 grupa.push(fren[duzina - 1][1]);
+    //             }
+    //         }
+
+
+
+    //     }
+    //     // console.log('grupa',grupa)
+    //     return Promise.resolve(grupa);
+
+    // }
+
+    // const dajNajmanje = function (po, x) {
+    //     let rez = [];
+    //     for (let i = 0; i < x; i++) {
+    //         rez.push(po[0]);
+
+    //     }
+    //     return rez;
+    // }
+    // const relativnoStandardnoOdstupanje = function (po = []) {
+    //     let x = arimetickaSredina(po);
+    //     let s = stanDevijacija(po);
+    //     let rsd = (s / x) * 100;
+    //     return rsd.toFixed(2);
+
+
+
+
+    // }
+
+
+
+    // const ispravanFormat = function (file) {
+    //     let ime = file.name;
+    //     return /JSON.json/.test(ime);
+    // }
+
+    // const grupiranjeFrekvencijaAink = function (po = [], f = 3) {
+    //     let frekvencije = Promise.resolve(po);
+    //     return frekvencije
+    //         .then(x => frekvencija(x))
+    //         .then(x => grupiranjeFrekvencijaP(x, f))
+    //     //return frekvencije;
+
+    // }
+
+    // ///****Unos funkcije sa nesortiranim polje i korak za greupiranje vrijednosti izla polje tipa [[vr1],[vr2]] */
+    // const frekvencijePromise = function (polje = [], korak = 1) {
+
+    //     return new Promise((res, odb) => {
+    //         let po = [...polje];
+    //         po.sort((a, b) => a - b)
+    //         //console.log(po);
+
+    //         let frekPolje = [];
+    //         let nutarnjePolje = [];
+    //         let prvi = Number(po[0]);
+
+    //         for (let i = 0; i < po.length; i++) {
+
+    //             if ((Number(po[i]) - prvi) < korak) {
+    //                 nutarnjePolje.push(po[i]);
+    //                 if (i === (po.length - 1)) {
+    //                     frekPolje.push(nutarnjePolje);
+    //                 }
+
+    //             } else {
+
+    //                 frekPolje.push(nutarnjePolje);
+    //                 nutarnjePolje = [];
+    //                 prvi = Number(po[i]);
+    //                 nutarnjePolje.push(po[i]);
+
+    //                 if (i === (po.length - 1)) {
+    //                     frekPolje.push(nutarnjePolje);
+
+    //                 }
+    //             }
+    //         }
+    //         res(frekPolje);
+    //         odb('Greška u obradi frekvencija')
+
+    //     })
+    // }
+
+
+
+
+    //*******************************CRTANJE GRAFA*************************************************
+
+
+    // const nacrtajGrafCanvas = function (polje = []) {
+    //     //console.log('graf',polje);
+    //     if (polje.length > 0) {
+    //         let zadnji = polje[polje.length - 1];
+    //         //console.log('zadnji',zadnji);
+    //         let z;
+    //         if (zadnji === undefined) {
+    //             z = 0;
+    //         } else {
+    //             z = zadnji[zadnji.length - 1];
+    //         }
+    //         //console.log('z',z);
+    //         let raspon = [polje[0][0], z];
+    //         const razmak = 5;
+    //         let frek = Number(raspon[0]);
+    //         //console.log('frek',frek)
+
+    //         const boje = ["lightblue", "lightgreen", "pink", "silver", "lightblue", "lightgreen", "pink", "silver",
+    //             "lightblue", "lightgreen", "pink", "silver"
+    //         ]
+
+    //         let razlika = Number(raspon[1]) - Number(raspon[0]);
+    //         //console.log('razlika',razlika)
+    //         let sirina = Math.ceil(razlika / razmak);
+    //         if (sirina === 0) sirina = 1;
+    //         //console.log('sirana',sirina)
+    //         //console.log('polje',polje,'raspon',raspon)
+    //         let faktor = Math.ceil(250 / razlika);
+    //         //console.log('faktor',faktor);
+    //         let brojStpoaca = polje.length;
+    //         let korak = Math.ceil(razlika / brojStpoaca) * faktor;
+    //         //console.log('korak',korak);
+
+    //         let can2 = document.createElement('canvas');
+    //         can2.setAttribute('width', '300px');
+    //         can2.setAttribute('height', '300px');
+
+
+
+    //         let graf = can2.getContext("2d");
+
+    //         graf.strokeRect(0, 0, 300, 300)
+
+
+
+    //         let xGraf = 10;
+    //         let yGraf = 0;
+    //         let najveciStupac = polje.reduce((rez, val) => {
+    //             return rez < val.length ? val.length : rez;
+
+    //         }, -Infinity)
+    //         //console.log('najveci',najveciStupac);
+    //         let brojac = 0
+    //         //console.log('grafx',xGraf);
+
+    //         const crtajGraf = function (x) {
+    //             let visina = (x.length / najveciStupac) * 300 * 0.8;
+    //             //console.log('visina',visina)
+    //             yGraf = 299 - visina;
+    //             graf.fillStyle = boje[brojac] || "blue";
+    //             graf.fillRect(xGraf, yGraf, 30, visina);
+    //             graf.save();
+    //             graf.font = "20px Times";
+    //             graf.fillStyle = 'red';
+    //             graf.translate(xGraf + 10, 80)
+    //             //graf.rotate(90*Math.PI/180);
+    //             graf.fillText(x.length, 0, 0)
+    //             graf.restore();
+    //             graf.save();
+    //             graf.font = "10px Times";
+    //             graf.fillStyle = 'red';
+    //             graf.translate(xGraf + 5, 290)
+    //             //graf.rotate(90*Math.PI/180);
+    //             graf.fillText(x[0], 0, 0)
+    //             graf.restore();
+
+    //             xGraf = xGraf + korak;
+    //             brojac++
+    //             frek = frek + Number(sirina);
+    //             //console.log('frek2',frek,'sirina',sirina);
+    //         }
+
+
+    //         polje.forEach(crtajGraf)
+    //         return can2;
+    //     } else {
+    //         return document.createElement('div');
+    //     }
+    // }
+
+
+    // ///********citanje stanja*********///
+    // const citajStanje = function (stanje) {
+    //     return new Promise((res, odb) => {
+    //         if (stanje[0]) {
+    //             res(stanje);
+    //         } else odb('nešto je pošlo po zlu jo nema stanja')
+    //     })
+    // }
+
+
+
+
+    // //
+    // const dajDep = function (x = [], y = 1) {
+
+    //     let mapx = x.deep.map((x) => x.prosjek);
+    //     frekvencijePromise(mapx, y)
+    //         .then(x => {
+
+    //             // console.log('x',x);
+    //             // console.log('stanjekn1',stanje);
+
+    //             // console.log('stanjekn2',stanje);
+    //             let graf = nacrtajGrafCanvas(x);
+    //             grafovi.insertAdjacentHTML("beforeEnd", "<h3>deep</h3>")
+    //             // kontejnerTablica.appendChild(graf);
+    //             grafovi.insertAdjacentElement('beforeEnd', graf);
+    //             //console.log('deep frekvencija',x, 'raspon ', rasponD)
+    //         })
+
+
+    // }
+
+    // const dajSuperf = function (x = [], y = 1) {
+    //     let mapx = x.superf.map((x) => x.prosjek);
+
+    //     frekvencijePromise(mapx, y)
+    //         .then(x => {
+    //             let graf = nacrtajGrafCanvas(x);
+    //             grafovi.insertAdjacentHTML("beforeEnd", "<h3>superficijal</h3>")
+    //             // kontejnerTablica.appendChild(graf);
+    //             grafovi.insertAdjacentElement('beforeEnd', graf);
+    //             // console.log('deep frekvencija',x, 'raspon ', rasponD)
+    //         })
+
+    // }
+
+
+    const updateStanje = function (stanje, y = 1, x = 0) {
+        while (kontejnerTablica.firstChild) {
+            kontejnerTablica.removeChild(kontejnerTablica.firstChild);
+        }
+
+        let proba = [...stanje];
+        while (grafovi.firstChild) {
+            grafovi.removeChild(grafovi.firstChild);
+        }
+
+        if (proba.length > 0) {
+            let x = proba.length - 1;
+            napraviTablicuObrade(proba[x]);
+            dajDep(proba[x], y);
+            dajSuperf(proba[x], y);
+            //  obradaViseFilova(proba);
+
+        }
+    }
+
+
+
+    ///////+++++++finkcija kombinira objekte  stanje i dodaj joj  novo svojstvo {ime:imefajla}
+
+    const spojiImeNaObjekt = function (stanje, ob1) {
+
+        return Object.assign(stanje, ob1);
+    }
+    const napraviObjektImeFajla = function (imeF) {
+        return {
+            ime: imeF.name
+        }
+    }
+
+
+
+
+    // const napraviObradu = function (deepPolje = [], x = deepPolje[0]) {
+    //     let deepBezPrvog = deepPolje.slice(1, deepPolje.length);
+    //     if (deepPolje.length <= 1) {
+    //         deepBezPrvog = [0];
+    //     };
+    //     return {
+    //         aritmetičkaSredina: arimetickaSredina(deepPolje),
+    //         medijan: medijan(deepPolje),
+    //         raspon: [deepPolje[0], deepPolje[deepPolje.length - 1]],
+    //         odstupanjeOdSredine: prosAbOdstOdAritSred(deepPolje, this.arimetickaSredina),
+    //         varijanca: varijanca(deepPolje, this.aritmetičkaSredina),
+    //         standardnaDevijacija: stanDevijacija(deepPolje),
+    //         // frekvencija:frekvencija(deepPolje),
+    //         //grupiranjeFrekvencija:grupiranjeFrekvencija(deepPolje,5),
+    //         najmanji: x, //deep[0]|| deepPolje[0],
+    //         rsd: relativnoStandardnoOdstupanje(deepPolje),
+    //         standarDevBezNajmanjeg: stanDevijacija(deepBezPrvog)
+
+
+    //     };
+    // }
+
+
+
+
+
+    // //funkcija obrada podataka ulazni parametar je polje stanje
+    // const obradaPodatakaSkupno = function (sta = {}) {
+
+    //     let deep = sta.deep.sort((a, b) => a.prosjek - b.prosjek);
+    //     let superf = sta.superf.sort((a, b) => a.prosjek - b.prosjek);
+
+    //     let deepPolje = deep.length > 0 ? deep.map(x => x.prosjek) : [0];
+    //     let superPolje = superf.length > 0 ? superf.map(x => x.prosjek) : [0];
+
+    //     let deepObrada = napraviObradu(deepPolje, deep[0]);
+    //     let superfObrada = napraviObradu(superPolje, superf[0]);
+
+
+
+    //     return {
+    //         deep,
+    //         superf,
+    //         deepObrada,
+    //         superfObrada
+    //     }
+
+    // }
+
+
+
+    ///*****funkcija  koja se rješava duplica u polju i vraća polje bez duplica
+    const bezDuplica = function (bezDuplica = []) {
+        bezDuplica = bezDuplica.map(x => JSON.stringify(x));
+        bezDuplica = new Set(bezDuplica)
+        bezDuplica = Array.from(bezDuplica)
+        bezDuplica = bezDuplica.map(x => JSON.parse(x));
+        return bezDuplica;
+    }
+
+
+
+    const obradaViseFilova = function (stanje) {
+        let obradaf = {
+            deep: [],
+            superf: []
+        }
+
+        obradaf = stanje.reduce((ak, val) => {
+            return Object.assign({}, {
+                deep: [...ak.deep, ...val.deep],
+                superf: [...ak.superf, ...val.superf]
+            })
+
+        }, {
+            deep: [],
+            superf: []
+        })
+        //console.log('obrada fajlova',obradaf)
+        obradaf.deep = bezDuplica(obradaf.deep);
+        obradaf.superf = bezDuplica(obradaf.superf);
+        // console.log('obradaf',obradaf)
+        // obradaf.deepObrada =napraviObradu( obradaf.deep);
+        // obradaf.superfObrada = napraviObradu(obradaf.superf);
+        let polje = obradaPodatakaSkupno(obradaf);
+
+        return polje;
+
+    }
+
+    //***************************POSTAVKE*************************************************
+    let stanje = [];
+
+    //********svi učitani fajlovi***** bez duplića
+    let ukupno = [];
+
+
+
+
+    const svifajlovi = document.getElementById('svi__fajlovi');
+    svifajlovi.addEventListener('click', () => {
+        klasaKlizaci2.style.display = "block";
+        ukupno.push(obradaViseFilova(stanje))
+        updateStanje(ukupno);
+        klasaKlizaci.style.display = "none";
+        stanje.forEach(x => {
+            // console.log('naslov',x.ime);
+            kontejnerTablica.insertAdjacentHTML('afterBegin', ` <h3>Datoteka: ${x.ime}</h3>`);
+        })
+        //  console.log('stanje',stanje);
+
+
+    })
+
+
+
+
+    const kontejnerTablica = document.getElementById('kontejnerTablica');
+   // const grafovi = document.getElementById('grafovi');
+   // grafovi.style.display = "none";
+    //kontejnerTablica.style.display = "none";
+    const jsonFile = document.getElementById('jsonFile');
+    const slider = document.getElementById('slider');
+   // const slider2 = document.getElementById('slider2');
+    const klasaKlizaci = document.querySelector("#klizac");
+    const klasaKlizaci2 = document.querySelector("#klizac2");
+
+    //klasaKlizaci.style.display = "none";
+    //klasaKlizaci2.style.display = "none";
+
+    const brojacSlider = document.getElementById("brojac__slider")
+    const brojacSlider2 = document.getElementById("brojac__slider2")
+    slider.addEventListener("change", function () {
+        // console.log("value",this.value);
+        brojacSlider.innerHTML = this.value;
+        updateStanje(stanje, this.value);
+    })
+    // slider2.addEventListener("change", function () {
+    //     //   console.log("value",this.value);
+
+    //     brojacSlider2.innerHTML = this.value;
+    //     updateStanje(ukupno, this.value);
+    // })
+
+
+    jsonFile.style.display = 'none';
+    //  izaberi datoteku malo drukčije
+    // const izaberi = document.getElementById('izaberi');
+    // izaberi.addEventListener('click', e => {
+    //     grafovi.style.display = "block";
+    //     kontejnerTablica.style.display = "block";
+
+    //     if (jsonFile) {
+    //         jsonFile.click();
+    //         // gumb();
+
+    //     }
+    // }, false)
+
+
+
+    //let fileReader = new FileReader();
+    jsonFile.addEventListener('change', e => {
+        console.log(e);
+        let files = jsonFile.files[0];
+        //console.log('ispravan format',ispravanFormat(files));
+        let fileReader = new FileReader();
+        // console.log('fil',files)
+        fileReader.readAsText(files);
+        // console.log(fileReader);
+
+        fileReader.onload = () => {
+            let ob = JSON.parse(fileReader.result);
+            let rasponD = ob.deepObrada.raspon;
+            let rasponF = ob.superfObrada.raspon;
+            Promise.resolve(fileReader.result)
+                .then(x => JSON.parse(x))
+                .then(x => {
+                     console.log('read',x);
+                    let obIme = napraviObjektImeFajla(files);
+
+                    stanje.push(spojiImeNaObjekt(x, obIme));
+
+                })
+                .then(() => {
+                    console.log(stanje);
+                    updateStanje(stanje);
+                  
+                    klasaKlizaci.style.display = 'block';
+                    klasaKlizaci2.style.display = 'none';
+
+                    //console.log('novo stanje',stanje);
+
+                })
+
+        }
+    })
+</script>
+
+</html>

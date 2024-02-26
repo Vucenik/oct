@@ -136,6 +136,10 @@ header nav ul{
     display: none;
    
 }
+#jsonFile{
+    display: none;
+}
+
 header >span{
  display: flex;
  align-items: center;
