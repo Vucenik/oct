@@ -176,3 +176,23 @@ export const napraviRGB = (x = []) => {
         };
     
         
+ ///*****funkcija  koja se rješava duplica u polju i vraća polje bez duplica
+ export const bezDuplica = function (bezDuplica = []) {
+    bezDuplica = bezDuplica.map(x => JSON.stringify(x));
+    bezDuplica = new Set(bezDuplica)
+    bezDuplica = Array.from(bezDuplica)
+    bezDuplica = bezDuplica.map(x => JSON.parse(x));
+    return bezDuplica;
+}
+
+///////+++++++finkcija kombinira objekte  stanje i dodaj joj  novo svojstvo {ime:imefajla}
+
+export const spojiImeNaObjekt = function (stanje, ob1) {
+
+    return Object.assign(stanje, ob1);
+}
+export const napraviObjektImeFajla = function (imeF) {
+    return {
+        ime: imeF.name
+    }
+}

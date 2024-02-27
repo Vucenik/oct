@@ -1,30 +1,22 @@
-  //***********************OBRADA ANGIO OCT  VV***************************************
-    // VERZIJA 1.0.6. mod broj elemenata
+  //*********************** ANGIO OCT READER VV***************************************
+    // VERZIJA 1.0.2. mod broj elemenata
     //AUTOR VLATKO VUČENIK 25.02.2024
  
 
     
 import { napraviTablicuObrade2 ,napravi_slike} from "./prezentacija.js";
-import {napraviRGB,dajProsjekRgb ,rafiniraj, prosjekRafinirani,napraviObjekt, daliJeImeDeepiliSuperficijal,frekvencijePromise, skini_obradu } from "./pomocne_funkcije.js";
+import {napraviObjektImeFajla,spojiImeNaObjekt ,bezDuplica,napraviRGB,dajProsjekRgb ,rafiniraj, prosjekRafinirani,napraviObjekt, daliJeImeDeepiliSuperficijal,frekvencijePromise, skini_obradu } from "./pomocne_funkcije.js";
 import { obradaPodatakaSkupno } from "./statisticke_funkcije.js";
 import { nacrtajGrafCanvas } from "./graf.js";
   
  
-  ///*****funkcija  koja se rješava duplica u polju i vraća polje bez duplica
-  const bezDuplica = function (bezDuplica = []) {
-    bezDuplica = bezDuplica.map(x => JSON.stringify(x));
-    bezDuplica = new Set(bezDuplica)
-    bezDuplica = Array.from(bezDuplica)
-    bezDuplica = bezDuplica.map(x => JSON.parse(x));
-    return bezDuplica;
-}
 
 
 
 
 
 const obradaViseFilova = function (stanje) {
-    let obradaf = {
+    const  obradaf = {
         deep: [],
         superf: []
     }
@@ -39,13 +31,10 @@ const obradaViseFilova = function (stanje) {
         deep: [],
         superf: []
     })
-    //console.log('obrada fajlova',obradaf)
+   
     obradaf.deep = bezDuplica(obradaf.deep);
     obradaf.superf = bezDuplica(obradaf.superf);
-    // console.log('obradaf',obradaf)
-    // obradaf.deepObrada =napraviObradu( obradaf.deep);
-    // obradaf.superfObrada = napraviObradu(obradaf.superf);
-    let polje = obradaPodatakaSkupno(obradaf);
+    const polje = obradaPodatakaSkupno(obradaf);
 
     return polje;
 
@@ -98,17 +87,7 @@ klizac.classList.add("pokazi_klizac");
 
 }
 
- ///////+++++++finkcija kombinira objekte  stanje i dodaj joj  novo svojstvo {ime:imefajla}
-
- const spojiImeNaObjekt = function (stanje, ob1) {
-
-    return Object.assign(stanje, ob1);
-}
-const napraviObjektImeFajla = function (imeF) {
-    return {
-        ime: imeF.name
-    }
-}
+ 
 
 
     //*****************************POSTAVKE*******************************
@@ -129,24 +108,16 @@ const napraviObjektImeFajla = function (imeF) {
         updateStanje(1,kontejnerTablica,klasaKlizaci,ukupno[ukupno.length-1]);
    //     klasaKlizaci.style.display = "none";
         obrada.forEach(x => {
-            // console.log('naslov',x.ime);
+          
             kontejnerTablica.insertAdjacentHTML('afterBegin', ` <h3>Datoteka: ${x.ime}</h3>`);
         })
-        //  console.log('stanje',stanje);
-
+       
 
     }) 
 
-
-
-
-
-  
-   const kontejnerTablica = document.getElementById('kontejnertablica');;
-   
  
-
-  // pokazivač 
+   const kontejnerTablica = document.getElementById('kontejnertablica');;
+     // pokazivač 
     const slider = document.getElementById('slider');
     const klasaKlizaci = document.querySelector(".klizac");
     const jsonFile = document.getElementById('jsonFile');
@@ -158,42 +129,36 @@ const napraviObjektImeFajla = function (imeF) {
         updateStanje(e.currentTarget.value,kontejnerTablica,klasaKlizaci,obrada[obrada.length-1]);
     })(brojacSlider));
 
-   
-    
+      
     jsonFile.addEventListener('change', e => {
-        console.log(e);
+     
         let files = jsonFile.files[0];
-        //console.log('ispravan format',ispravanFormat(files));
-        let fileReader = new FileReader();
-        // console.log('fil',files)
-        fileReader.readAsText(files);
-        // console.log(fileReader);
+   
+       
+   
+        new Promise ((res,rej)=>{
+            let fileReader = new FileReader();
+     
+            fileReader.readAsText(files);
+            fileReader.onload = () =>  res(fileReader.result);
+            fileReader.onerror=(err)=>rej(err);
 
-        fileReader.onload = () => {
-            let ob = JSON.parse(fileReader.result);
-            let rasponD = ob.deepObrada.raspon;
-            let rasponF = ob.superfObrada.raspon;
-            Promise.resolve(fileReader.result)
+        })
                 .then(x => JSON.parse(x))
                 .then(x => {
-                     console.log('read',x);
+                    
                     let obIme = napraviObjektImeFajla(files);
 
                     obrada.push(spojiImeNaObjekt(x, obIme));
 
                 })
                 .then(() => {
-                    console.log(obrada);
+                 
                     updateStanje(1,kontejnerTablica,klasaKlizaci,obrada[obrada.length-1]);
                   
-                   // klasaKlizaci.style.display = 'block';
-                 //   klasaKlizaci2.style.display = 'none';
-
-                    //console.log('novo stanje',stanje);
-
                 })
 
-        };
+        
     });
 
 
