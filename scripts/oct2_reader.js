@@ -16,12 +16,12 @@ import { nacrtajGrafCanvas } from "./graf.js";
 
 
 const obradaViseFilova = function (stanje) {
-    const  obradaf = {
-        deep: [],
-        superf: []
-    }
+    // const  obradaf = {
+    //     deep: [],
+    //     superf: []
+    // }
 
-    obradaf = stanje.reduce((ak, val) => {
+   const obradaf = stanje.reduce((ak, val) => {
         return Object.assign({}, {
             deep: [...ak.deep, ...val.deep],
             superf: [...ak.superf, ...val.superf]
@@ -98,7 +98,7 @@ klizac.classList.add("pokazi_klizac");
 
     //********svi učitani fajlovi***** bez duplića
     let ukupno = [];
-
+ let jedna_datoteka = true;
 
      const svifajlovi = document.getElementById('svi__fajlovi');
     svifajlovi.addEventListener('click', () => {
