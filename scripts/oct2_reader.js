@@ -105,6 +105,7 @@ klizac.classList.add("pokazi_klizac");
       //  klasaKlizaci2.style.display = "block";
         ukupno.push(obradaViseFilova(obrada))
         console.log(ukupno);
+        jedna_datoteka=false;
         updateStanje(1,kontejnerTablica,klasaKlizaci,ukupno[ukupno.length-1]);
    //     klasaKlizaci.style.display = "none";
         obrada.forEach(x => {
@@ -126,7 +127,12 @@ klizac.classList.add("pokazi_klizac");
     slider.addEventListener("change",(brojacSlider=>e=>{
     
         brojacSlider.innerHTML = e.currentTarget.value;
+        if(jedna_datoteka){
         updateStanje(e.currentTarget.value,kontejnerTablica,klasaKlizaci,obrada[obrada.length-1]);
+    }else{
+        updateStanje(e.currentTarget.value,kontejnerTablica,klasaKlizaci,ukupno[ukupno.length-1]);
+    }
+
     })(brojacSlider));
 
       
@@ -153,7 +159,7 @@ klizac.classList.add("pokazi_klizac");
 
                 })
                 .then(() => {
-                 
+                 jedna_datoteka=true;
                     updateStanje(1,kontejnerTablica,klasaKlizaci,obrada[obrada.length-1]);
                   
                 })
