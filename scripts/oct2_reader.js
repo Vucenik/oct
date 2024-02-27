@@ -126,7 +126,7 @@ const napraviObjektImeFajla = function (imeF) {
       //  klasaKlizaci2.style.display = "block";
         ukupno.push(obradaViseFilova(obrada))
         console.log(ukupno);
-        updateStanje(1,kontejnerTablica,klasaKlizaci,ukupno[0]);
+        updateStanje(1,kontejnerTablica,klasaKlizaci,ukupno[ukupno.length-1]);
    //     klasaKlizaci.style.display = "none";
         obrada.forEach(x => {
             // console.log('naslov',x.ime);
