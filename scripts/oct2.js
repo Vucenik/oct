@@ -43,7 +43,7 @@ let mapx= x.superf.map((x)=>x.prosjek);
 }
 
 
-const updateStanje = function(y=1,kontejner,klizac){
+const updateStanje = function(y=1,kontejner,klizac,obrada){
     napraviTablicuObrade2(obrada,kontejner);
     dajDep(obrada,y,kontejner);
     dajSuperf(obrada,y,kontejner);
@@ -83,7 +83,8 @@ detalji.insertAdjacentHTML('afterbegin',"<ul><li>oznaka slike</li><li>udio žila
     linkObrada.addEventListener('click',function(){
         if(obrada.deep||obrada.superf){
      
-        updateStanje(1,kontejnerTablica,klasaKlizaci);
+        updateStanje(1,kontejnerTablica,klasaKlizaci,obrada);
+      
     
         }
     })
@@ -97,7 +98,8 @@ detalji.insertAdjacentHTML('afterbegin',"<ul><li>oznaka slike</li><li>udio žila
     slider.addEventListener("change",(brojacSlider=>e=>{
     
         brojacSlider.innerHTML = e.currentTarget.value;
-        updateStanje(e.currentTarget.value,kontejnerTablica,klasaKlizaci);
+        updateStanje(e.currentTarget.value,kontejnerTablica,klasaKlizaci,obrada);
+       
     })(brojacSlider));
 
    

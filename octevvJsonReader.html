@@ -590,40 +590,29 @@
     // }
 
 
-    const updateStanje = function (stanje, y = 1, x = 0) {
-        while (kontejnerTablica.firstChild) {
-            kontejnerTablica.removeChild(kontejnerTablica.firstChild);
-        }
+    // const updateStanje = function (stanje, y = 1, x = 0) {
+    //     while (kontejnerTablica.firstChild) {
+    //         kontejnerTablica.removeChild(kontejnerTablica.firstChild);
+    //     }
 
-        let proba = [...stanje];
-        while (grafovi.firstChild) {
-            grafovi.removeChild(grafovi.firstChild);
-        }
+    //     let proba = [...stanje];
+    //     while (grafovi.firstChild) {
+    //         grafovi.removeChild(grafovi.firstChild);
+    //     }
 
-        if (proba.length > 0) {
-            let x = proba.length - 1;
-            napraviTablicuObrade(proba[x]);
-            dajDep(proba[x], y);
-            dajSuperf(proba[x], y);
-            //  obradaViseFilova(proba);
+    //     if (proba.length > 0) {
+    //         let x = proba.length - 1;
+    //         napraviTablicuObrade(proba[x]);
+    //         dajDep(proba[x], y);
+    //         dajSuperf(proba[x], y);
+    //         //  obradaViseFilova(proba);
 
-        }
-    }
+    //     }
+    // }
 
 
 
-    ///////+++++++finkcija kombinira objekte  stanje i dodaj joj  novo svojstvo {ime:imefajla}
-
-    const spojiImeNaObjekt = function (stanje, ob1) {
-
-        return Object.assign(stanje, ob1);
-    }
-    const napraviObjektImeFajla = function (imeF) {
-        return {
-            ime: imeF.name
-        }
-    }
-
+   
 
 
 
@@ -678,92 +667,37 @@
 
 
 
-    ///*****funkcija  koja se rješava duplica u polju i vraća polje bez duplica
-    const bezDuplica = function (bezDuplica = []) {
-        bezDuplica = bezDuplica.map(x => JSON.stringify(x));
-        bezDuplica = new Set(bezDuplica)
-        bezDuplica = Array.from(bezDuplica)
-        bezDuplica = bezDuplica.map(x => JSON.parse(x));
-        return bezDuplica;
-    }
-
-
-
-    const obradaViseFilova = function (stanje) {
-        let obradaf = {
-            deep: [],
-            superf: []
-        }
-
-        obradaf = stanje.reduce((ak, val) => {
-            return Object.assign({}, {
-                deep: [...ak.deep, ...val.deep],
-                superf: [...ak.superf, ...val.superf]
-            })
-
-        }, {
-            deep: [],
-            superf: []
-        })
-        //console.log('obrada fajlova',obradaf)
-        obradaf.deep = bezDuplica(obradaf.deep);
-        obradaf.superf = bezDuplica(obradaf.superf);
-        // console.log('obradaf',obradaf)
-        // obradaf.deepObrada =napraviObradu( obradaf.deep);
-        // obradaf.superfObrada = napraviObradu(obradaf.superf);
-        let polje = obradaPodatakaSkupno(obradaf);
-
-        return polje;
-
-    }
+   
 
     //***************************POSTAVKE*************************************************
-    let stanje = [];
-
-    //********svi učitani fajlovi***** bez duplića
-    let ukupno = [];
+   
 
 
 
-
-    const svifajlovi = document.getElementById('svi__fajlovi');
-    svifajlovi.addEventListener('click', () => {
-        klasaKlizaci2.style.display = "block";
-        ukupno.push(obradaViseFilova(stanje))
-        updateStanje(ukupno);
-        klasaKlizaci.style.display = "none";
-        stanje.forEach(x => {
-            // console.log('naslov',x.ime);
-            kontejnerTablica.insertAdjacentHTML('afterBegin', ` <h3>Datoteka: ${x.ime}</h3>`);
-        })
-        //  console.log('stanje',stanje);
-
-
-    })
+   
 
 
 
-
-    const kontejnerTablica = document.getElementById('kontejnerTablica');
+   // const kontejnerTablica = document.getElementById('kontejnertablica');
    // const grafovi = document.getElementById('grafovi');
    // grafovi.style.display = "none";
     //kontejnerTablica.style.display = "none";
-    const jsonFile = document.getElementById('jsonFile');
-    const slider = document.getElementById('slider');
+    
+   // const slider = document.getElementById('slider');
    // const slider2 = document.getElementById('slider2');
-    const klasaKlizaci = document.querySelector("#klizac");
-    const klasaKlizaci2 = document.querySelector("#klizac2");
+    //const klasaKlizaci = document.querySelector("#klizac");
+  //  const klasaKlizaci2 = document.querySelector("#klizac2");
 
     //klasaKlizaci.style.display = "none";
     //klasaKlizaci2.style.display = "none";
 
-    const brojacSlider = document.getElementById("brojac__slider")
-    const brojacSlider2 = document.getElementById("brojac__slider2")
-    slider.addEventListener("change", function () {
-        // console.log("value",this.value);
-        brojacSlider.innerHTML = this.value;
-        updateStanje(stanje, this.value);
-    })
+   // const brojacSlider = document.getElementById("brojac__slider")
+    //const brojacSlider2 = document.getElementById("brojac__slider2")
+    // slider.addEventListener("change", function () {
+    //     // console.log("value",this.value);
+    //     brojacSlider.innerHTML = this.value;
+    //     updateStanje(stanje, this.value);
+    // })
     // slider2.addEventListener("change", function () {
     //     //   console.log("value",this.value);
 
@@ -772,7 +706,7 @@
     // })
 
 
-    jsonFile.style.display = 'none';
+   // jsonFile.style.display = 'none';
     //  izaberi datoteku malo drukčije
     // const izaberi = document.getElementById('izaberi');
     // izaberi.addEventListener('click', e => {
@@ -789,41 +723,7 @@
 
 
     //let fileReader = new FileReader();
-    jsonFile.addEventListener('change', e => {
-        console.log(e);
-        let files = jsonFile.files[0];
-        //console.log('ispravan format',ispravanFormat(files));
-        let fileReader = new FileReader();
-        // console.log('fil',files)
-        fileReader.readAsText(files);
-        // console.log(fileReader);
-
-        fileReader.onload = () => {
-            let ob = JSON.parse(fileReader.result);
-            let rasponD = ob.deepObrada.raspon;
-            let rasponF = ob.superfObrada.raspon;
-            Promise.resolve(fileReader.result)
-                .then(x => JSON.parse(x))
-                .then(x => {
-                     console.log('read',x);
-                    let obIme = napraviObjektImeFajla(files);
-
-                    stanje.push(spojiImeNaObjekt(x, obIme));
-
-                })
-                .then(() => {
-                    console.log(stanje);
-                    updateStanje(stanje);
-                  
-                    klasaKlizaci.style.display = 'block';
-                    klasaKlizaci2.style.display = 'none';
-
-                    //console.log('novo stanje',stanje);
-
-                })
-
-        }
-    })
+    
 </script>
 
 </html>

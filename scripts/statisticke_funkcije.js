@@ -133,3 +133,27 @@
         }
 
     }
+
+
+    //funkcija obrada podataka ulazni parametar je polje stanje za reader
+  export  const obradaPodatakaSkupno = function (sta = {}) {
+
+        let deep = sta.deep.sort((a, b) => a.prosjek - b.prosjek);
+        let superf = sta.superf.sort((a, b) => a.prosjek - b.prosjek);
+
+        let deepPolje = deep.length > 0 ? deep.map(x => x.prosjek) : [0];
+        let superPolje = superf.length > 0 ? superf.map(x => x.prosjek) : [0];
+
+        let deepObrada = napraviObradu(deepPolje, deep[0]);
+        let superfObrada = napraviObradu(superPolje, superf[0]);
+
+
+
+        return {
+            deep,
+            superf,
+            deepObrada,
+            superfObrada
+        }
+
+    }
