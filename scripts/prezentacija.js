@@ -63,7 +63,7 @@ let raspon2F = obrada.superfObrada.raspon[1];
 let odstupanjeOdSredineF = obrada.superfObrada.odstupanjeOdSredine;
 let varijancaF =Number.parseFloat(obrada.superfObrada.varijanca).toFixed(2);
 let rsdF = Number.parseFloat(obrada.superfObrada.rsd).toFixed(2);
-let brojEelemenataF = obrada.deepObrada.brojElemenata;
+let brojEelemenataF = obrada.superfObrada.brojElemenata;
 
 //let devijacijaF = obrada.superfObrada.standardnaDevijacija?obrada.superfObrada.standardnaDevijacija:"";
 let devijacijaF = Number.parseFloat(obrada.superfObrada.standardnaDevijacija).toFixed(2);
@@ -227,3 +227,13 @@ kontejner.appendChild(div);
 podaci.observer.observe(dl);
 
 }
+
+// radi popis daoteka iz polja
+export const imena_datoteke = polje=>{
+   
+    return polje.reduce((ak,val)=>{
+ak=ak+`<li>${val.ime}</li>`
+return ak;
+    },"<ul>")+"</ul>";
+
+   }

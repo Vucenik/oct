@@ -4,8 +4,8 @@
  
 
     
-import { napraviTablicuObrade2 ,napravi_slike} from "./prezentacija.js";
-import {napraviObjektImeFajla,spojiImeNaObjekt ,bezDuplica,napraviRGB,dajProsjekRgb ,rafiniraj, prosjekRafinirani,napraviObjekt, daliJeImeDeepiliSuperficijal,frekvencijePromise, skini_obradu } from "./pomocne_funkcije.js";
+import { napraviTablicuObrade2 ,imena_datoteke} from "./prezentacija.js";
+import {napraviObjektImeFajla,spojiImeNaObjekt ,bezDuplica,frekvencijePromise } from "./pomocne_funkcije.js";
 import { obradaPodatakaSkupno } from "./statisticke_funkcije.js";
 import { nacrtajGrafCanvas } from "./graf.js";
   
@@ -107,11 +107,8 @@ klizac.classList.add("pokazi_klizac");
         console.log(ukupno);
         jedna_datoteka=false;
         updateStanje(1,kontejnerTablica,klasaKlizaci,ukupno[ukupno.length-1]);
-   //     klasaKlizaci.style.display = "none";
-        obrada.forEach(x => {
-          
-            kontejnerTablica.insertAdjacentHTML('afterBegin', ` <h3>Datoteka: ${x.ime}</h3>`);
-        })
+  
+        kontejnerTablica.insertAdjacentHTML('afterbegin', imena_datoteke(obrada));
        
 
     }) 
@@ -129,14 +126,11 @@ klizac.classList.add("pokazi_klizac");
         brojacSlider.innerHTML = e.currentTarget.value;
         if(jedna_datoteka){
         updateStanje(e.currentTarget.value,kontejnerTablica,klasaKlizaci,obrada[obrada.length-1]);
-        kontejnerTablica.insertAdjacentHTML('afterBegin', ` <h3>Datoteka: ${obrada[obrada.length-1].ime}</h3>`);
+        kontejnerTablica.insertAdjacentHTML('afterbegin', imena_datoteke([obrada[obrada.length-1]]));
     }else{
        
         updateStanje(e.currentTarget.value,kontejnerTablica,klasaKlizaci,ukupno[ukupno.length-1]);
-        obrada.forEach(x => {
-          
-            kontejnerTablica.insertAdjacentHTML('afterBegin', ` <h3>Datoteka: ${x.ime}</h3>`);
-        })
+        kontejnerTablica.insertAdjacentHTML('afterbegin', imena_datoteke(obrada));
     }
 
     })(brojacSlider));
@@ -167,7 +161,7 @@ klizac.classList.add("pokazi_klizac");
                 .then(() => {
                  jedna_datoteka=true;
                     updateStanje(1,kontejnerTablica,klasaKlizaci,obrada[obrada.length-1]);
-                    kontejnerTablica.insertAdjacentHTML('afterBegin', ` <h3>Datoteka: ${obrada[obrada.length-1].ime}</h3>`);
+                    kontejnerTablica.insertAdjacentHTML('afterbegin', imena_datoteke([obrada[obrada.length-1]]));
                   
                 })
 
