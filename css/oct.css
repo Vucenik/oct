@@ -272,15 +272,13 @@ align-items: center;
 table{
     border-collapse: collapse;
     text-align: center;
-    margin-bottom: 2em;
-    margin-top: 2em;
-
+   margin:2em auto;
 }
 caption{
     border-top-right-radius: 0.2em;
     border-top-left-radius: 0.2em;
     background-color: white;
-    padding:2em 0em;
+    padding:2em;
     font-size: 1.5em;
     text-align: start;
 }
