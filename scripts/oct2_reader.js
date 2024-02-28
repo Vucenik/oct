@@ -129,8 +129,14 @@ klizac.classList.add("pokazi_klizac");
         brojacSlider.innerHTML = e.currentTarget.value;
         if(jedna_datoteka){
         updateStanje(e.currentTarget.value,kontejnerTablica,klasaKlizaci,obrada[obrada.length-1]);
+        kontejnerTablica.insertAdjacentHTML('afterBegin', ` <h3>Datoteka: ${obrada[obrada.length-1].ime}</h3>`);
     }else{
+       
         updateStanje(e.currentTarget.value,kontejnerTablica,klasaKlizaci,ukupno[ukupno.length-1]);
+        obrada.forEach(x => {
+          
+            kontejnerTablica.insertAdjacentHTML('afterBegin', ` <h3>Datoteka: ${x.ime}</h3>`);
+        })
     }
 
     })(brojacSlider));
@@ -161,6 +167,7 @@ klizac.classList.add("pokazi_klizac");
                 .then(() => {
                  jedna_datoteka=true;
                     updateStanje(1,kontejnerTablica,klasaKlizaci,obrada[obrada.length-1]);
+                    kontejnerTablica.insertAdjacentHTML('afterBegin', ` <h3>Datoteka: ${obrada[obrada.length-1].ime}</h3>`);
                   
                 })
 
