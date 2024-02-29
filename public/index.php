@@ -6,13 +6,13 @@ Vlatko Vučenik
 */
 
 require '../config/config.php';
-echo APP_ROOT.'<br>';
-echo TEMPLATE_DIR.'<br>';
-echo DOC_ROOT.'<br>';
-echo APP_DOMAIN.'<br>';
-echo DOC_ROOT.'<br>';
-echo HTTP_ROOT.'<br>';
-echo HTML_PAGE.'<br>';
+// echo APP_ROOT.'<br>';
+// echo TEMPLATE_DIR.'<br>';
+// echo DOC_ROOT.'<br>';
+// echo APP_DOMAIN.'<br>';
+// echo DOC_ROOT.'<br>';
+// echo HTTP_ROOT.'<br>';
+// echo HTML_PAGE.'<br>';
 
 
 $request = new Request();
