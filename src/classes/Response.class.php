@@ -49,7 +49,7 @@ public function redirect(string $location,int $code=302):void{
 public function html (string $html):callable{
 
     return function () use ($html) {
-  echo("<br>html ".$html);
+ // echo("<br>html ".$html);
       if( file_exists( HTML_PAGE.$html)){
         header("HTTP/1.1 200 OK");
         header("Content-Type:text/html;charset=utf-8");
