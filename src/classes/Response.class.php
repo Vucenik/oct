@@ -50,16 +50,16 @@ public function html (string $html):callable{
 
     return function () use ($html) {
   echo("<br>html ".$html);
-      if( file_exists( APP_ROOT.DIRECTORY_SEPARATOR.'src'.DIRECTORY_SEPARATOR.'pages'.DIRECTORY_SEPARATOR.$html)){
+      if( file_exists( HTML_PAGE.$html)){
         header("HTTP/1.1 200 OK");
         header("Content-Type:text/html;charset=utf-8");
         header("X-Frame-Options:DENY");//prevent click jacking
     
-        echo   file_get_contents( APP_ROOT.DIRECTORY_SEPARATOR.'src'.DIRECTORY_SEPARATOR.'pages'.DIRECTORY_SEPARATOR.$html) ;
+        echo   file_get_contents( HTML_PAGE.$html) ;
       }else{
         header("HTTP/1.1 404 Not Found");
         header("Content-Type:text/plain;charset=utf-8");
-       include APP_ROOT.DIRECTORY_SEPARATOR.'src'.DIRECTORY_SEPARATOR.'pages'.DIRECTORY_SEPARATOR.'greska.html';
+       include HTML_PAGE.$html.'greska.html';
       }
     };
   }

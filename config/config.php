@@ -20,7 +20,7 @@ define("DOC_ROOT",'/'.$parent_folder);
 //define("DOC_ROOT",$parent_folder.'');
 define('TEMPLATE_DIR', APP_ROOT.DIRECTORY_SEPARATOR.'templates'.DIRECTORY_SEPARATOR);
 define('TEMPLATE', DOC_ROOT.'/templates'.DIRECTORY_SEPARATOR);
-
+define('HTML_PAGE',APP_ROOT.DIRECTORY_SEPARATOR.'src'.DIRECTORY_SEPARATOR.'pages'.DIRECTORY_SEPARATOR);
 require APP_ROOT.'/src/function/autoload.php';
 
 

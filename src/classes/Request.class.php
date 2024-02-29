@@ -1,7 +1,7 @@
 <?php
 /*
 Request.class.php
-Prognoze
+OCT ANGIO ANALIZATOR
 Vlatko Vučenik
 Last Modified:26.04.2023 16:40
 */ 
@@ -33,9 +33,7 @@ final class Request{
             $this->data=$_GET;
             break;
     };
-   // echo $_SESSION['admin'];
-  
- 
+   
    
 
 
