@@ -15,9 +15,11 @@ echo HTTP_ROOT.'<br>';
 
 
 $request = new Request();
-
+$response = new Response();
 //Ruter::set('/naruci',$kontroler->naruci());
-
-
+Ruter::set('/',$response->html('octanalizator.html'));
+Ruter::set('',$response->html('octanalizator.html'));
+Ruter::set('/home',$response->html('octanalizator.html'));
+Ruter::set('/reader',$response->html('octevvJsonReader.html'));
 Ruter::run($request->get_path(),$request->get_method())();
 ?>
