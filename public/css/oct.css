@@ -361,3 +361,34 @@ border-radius: 50%;
 #slider:hover{
     opacity: 1;
 }
+
+
+@media(max-width:34em){
+    header{
+          min-height: 3em;
+       
+        padding: 0.5em 1em;
+     
+      
+    }
+    h1{
+     
+        padding: 0.5em;
+    font-size: 1.5em;
+       
+    }
+    header a, header label{
+     
+        padding: 0.1em 0.3em;
+        text-align: center;
+        
+    }
+    .detalji_pokazi_detalji ul>li:nth-of-type(2){
+
+        flex: 0 0 8em;
+     text-align: center;
+     
+   
+   }
+
+}
