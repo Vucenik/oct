@@ -16,7 +16,7 @@ export const napraviTablicu = function (po = [],naslov="") {
     const th1 = document.createElement('th');
     th.textContent = 'Slika naslov';
     tr.appendChild(th);
-    th1.textContent = 'udio žila u% ';
+    th1.textContent = 'udio žila i kapilara u%';
     tr.appendChild(th1);
     tablica.appendChild(tr);
 

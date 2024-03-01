@@ -222,6 +222,10 @@ section{
     cursor:pointer;
   
 
+
+}
+.kontejner ul{
+    padding: 1.5em;
 }
 .kontejner_dl{
     width:100%;
@@ -390,5 +394,9 @@ border-radius: 50%;
      
    
    }
+   canvas ,img{
+    margin: 0.5em;
+    max-width: 22em;
+}
 
 }
