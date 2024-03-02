@@ -224,6 +224,7 @@ section{
 
 
 }
+
 .kontejner ul{
     padding: 1.5em;
 }
@@ -397,6 +398,74 @@ border-radius: 50%;
    canvas ,img{
     margin: 0.5em;
     max-width: 22em;
+}
+
+}
+
+@media(max-width:25em){
+    header{
+          min-height: 4em;
+       
+        padding: 0.5em 1em;
+     
+      
+    }
+    h1{
+     
+        padding: 0.5em;
+    font-size: 1.5em;
+       
+    }
+    header a, header label{
+     
+        padding: 0.1em 0.3em;
+        text-align: center;
+        
+    }
+    .kontejner{
+        width:100%;
+        max-width: 22em;
+        margin: 0 auto;
+    }
+    table{
+        font-size: 1em;
+    }
+    caption{
+      
+        padding:1em;
+        font-size: 1.2em;
+        text-align: start;
+    }
+    
+    .detalji_pokazi_detalji ul{
+     
+        font-weight: normal;
+
+
+
+       font-size: medium;
+    
+    }
+    .detalji_pokazi_detalji ul>li:nth-of-type(2){
+
+        flex: 0 0 6em;
+     text-align: center;
+     
+   
+   }
+   .detalji_pokazi_detalji ul>li:nth-of-type(3){
+    flex: 0 0 2em;
+ 
+}
+
+.detalji_pokazi_detalji ul>li:nth-of-type(4){
+    flex:0 0 2em;
+    text-align: center;
+   
+}
+   canvas ,img{
+    margin: 0.5em;
+    max-width: 18em;
 }
 
 }
