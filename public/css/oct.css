@@ -274,10 +274,15 @@ figure{
 justify-content: center;
 align-items: center;
 }
+.kontejner{
+    margin: 0 auto;
+}
 table{
+  
+    width:100%;
     border-collapse: collapse;
     text-align: center;
-   margin:2em auto;
+   margin:2em 0;
 }
 caption{
     border-top-right-radius: 0.2em;
