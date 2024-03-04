@@ -436,7 +436,7 @@ border-radius: 50%;
     }
     header a, header label{
      
-        padding: 0.1em 0.3em;
+        padding: 0.3em 0.4em;
         text-align: center;
         
     }
@@ -447,7 +447,12 @@ border-radius: 50%;
     
     }
     header nav ul{
-      display:absolute;
+        min-width: 10em;
+      position: absolute;
+      flex-direction: column;
+      left:0;
+      top: 4em;
+      
     }
     
 
