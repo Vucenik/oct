@@ -132,6 +132,53 @@ header nav ul{
     list-style: none;
     display: flex;
 }
+
+
+#id_hamburger{
+    display:none;
+ }
+ 
+/* label.svg_label{
+     position:relative;
+   left:-200em;
+ 
+ }
+ */
+ label.svg_label{
+     display:inline-block;
+   width:2em;
+   height:2em;
+   background-color: transparent;
+ }
+ 
+ .svg_hamburger{
+ 
+   width:100%;
+   height: 100%;
+ }
+ line{
+   stroke:var(--boja-znaka-pou);
+   stroke-width:13;
+   stroke-linecap:round ;
+   fill:none;
+ transition:transform 0.5s;
+ 
+ }
+ #id_hamburger:checked+label>.svg_hamburger line:first-of-type{
+     transform-origin: center center;
+   transform:rotateZ(45deg) translateY(30%) ;
+ }
+ #id_hamburger:checked+label>.svg_hamburger line:nth-child(2){
+     transform:scaleX(0);
+   transform-origin: 10% 10%;
+ }
+ #id_hamburger:checked+label>.svg_hamburger line:last-of-type{
+     transform-origin: center center;
+   transform:rotateZ(-45deg) translateY(-30%) ;
+ }
+
+
+
 #file{
     display: none;
    
@@ -427,6 +474,10 @@ border-radius: 50%;
         text-align: center;
         
     }
+
+   
+
+
     .kontejner{
         width:100%;
         max-width: 22em;
