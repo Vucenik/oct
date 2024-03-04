@@ -122,7 +122,7 @@ header a, header label{
     padding: 0.3em 0.5em;
     transition: border 0.5s, opacity 0.5s, background-color 0.5s;
 }
-header a:hover,header label:hover{
+header ul a:hover,header ul label:hover{
     border-bottom: 2px solid var(--boja-znaka-pou);
     opacity: 0.8;
     background-color: var(--background-color-hoover);
@@ -452,10 +452,24 @@ border-radius: 50%;
       flex-direction: column;
       left:0;
       top: 4em;
+      transform:translateX(-15em);
+      transition: all 0.5s;
       
     }
     
+    #id_hamburger:checked~ul{
+        transform:translateX(0);
 
+    }
+
+    
+    header ul a:hover,header ul label:hover{
+        opacity: 1;
+font-weight: bolder;
+color:var(--font-color-crveni);
+        background-color: white;
+        
+    }
 
     .detalji_pokazi_detalji ul>li:nth-of-type(2){
 
