@@ -420,7 +420,7 @@ border-radius: 50%;
 }
 
 
-@media(max-width:38em){
+@media(max-width:45em){
     .vanjski_kontejner{
      
         scroll-padding-block-start: 4em;
