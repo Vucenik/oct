@@ -208,8 +208,8 @@ h1>p:nth-of-type(2){
     text-transform: none;
     font-weight: normal;
     text-align: left;
-    font-size: 80%;
-    
+    font-size: 0.8em ;
+
 }
 
 section{
@@ -222,6 +222,20 @@ section{
     align-items: center;
     justify-content: center;
 }
+
+dl{
+    padding: 1em;
+}
+dt{
+    font-weight: bold;
+    margin: 0.5em 0;
+}
+dl ul {
+ padding-left: 0.2em;  
+ list-style-type:disc;
+ list-style-position: inside;
+}
+
 .detalji_pokazi_detalji ul{
     width:100%;
     max-width: 40em;
