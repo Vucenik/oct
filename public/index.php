@@ -15,6 +15,7 @@ Ruter::set('/',$response->html('octanalizator.html'));
 Ruter::set('',$response->html('octanalizator.html'));
 Ruter::set('/home',$response->html('octanalizator.html'));
 Ruter::set('/reader',$response->html('octevvJsonReader.html'));
+Ruter::set('/projekt',$response->html('projekt.html'));
 Ruter::run($request->get_path(),$request->get_method())();
 
 ?>
