@@ -14,14 +14,14 @@
  - 40-49g. iznosile su 36,33%,
  - 50-59g. iznosile su 34,98%, 
  - 60-69g. iznosile su 32,38% 
-  - > 70g. iznosile su 32,33%
+  - "> 70g. iznosile su 32,33%
 3. Dobivene srednje vrijednost vaskularne gustoće u dubokom kapilarnom pleksusu pleksusu za dobne skupine 
  - 18-29g. iznosile su 49,24%,
  - 30-39g.  iznosile su 49,87%, 
  - 40-49g. iznosile su 48,90%,
  - 50-59g. iznosile su 48,87%, 
  - 60-69g. iznosile su 47,82%,
- - > 70g. iznosile su 46,76% 
+ - ">70g. iznosile su 46,76% 
 
    Vaskularna gustoća je stabilna do pedesete godine uz blago povećanje za skupine od 30-39  godine, nakon  50-te godine u svim skupina vaskularna gustoća  počinje progresivno opadati.
 # Zaključak:
