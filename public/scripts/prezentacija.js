@@ -180,6 +180,11 @@ kontejnerTablica.insertAdjacentHTML('beforeEnd', obradaSuper);
 export const napravi_slike=(kontejner,podaci={img:"",rGb:"",prosjek:"",fileName:"",can1:"",observer:""})=>{
   //  detalji.insertAdjacentHTML('afterbegin',"<ul><li>oznaka slike</li><li>udio žila i kapilara u %</li><li>RGB </li><li></li></ul>");
 
+console.log(kontejner.children.length);
+if(kontejner.children.length===0){
+    kontejner.insertAdjacentHTML('afterbegin',"<ul><li>Oznaka slike</li><li>Udio žila u %</li><li>RGB </li><li></li></ul>");
+}
+
   const ul =document.createElement('ul');
   const div = document.createElement('div');
   div.className="kontejner_dl";

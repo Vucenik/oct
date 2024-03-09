@@ -78,7 +78,7 @@ klizac.classList.add("pokazi_klizac");
     const spiner = document.getElementById('spiner');
     const linkObrada = document.getElementById('obrada');
     const detalji = document.getElementById('detalji_kontejner'); //novi
-detalji.insertAdjacentHTML('afterbegin',"<ul><li>Oznaka slike</li><li>Udio žila u %</li><li>RGB </li><li></li></ul>");
+
 
     linkObrada.addEventListener('click',function(){
         if(obrada.deep||obrada.superf){
