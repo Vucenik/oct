@@ -344,6 +344,9 @@ figure{
 justify-content: center;
 align-items: center;
 }
+figcaption{
+    max-width:45em ;
+}
 .kontejner{
     margin: 0 auto;
 }
