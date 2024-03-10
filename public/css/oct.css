@@ -211,6 +211,9 @@ h1>p:nth-of-type(2){
     font-size: 0.8em ;
 
 }
+h2{
+    padding: 1em;
+}
 
 section{
     padding: 0.4em;
