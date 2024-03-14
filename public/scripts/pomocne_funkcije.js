@@ -152,26 +152,32 @@ export const napraviRGB = (x = []) => {
         ///skidanje tablice obrade u json formatu
         export const skini_obradu=obrada=>e => {
 
-
-            let txt;
+console.log(e.currentTarget);
+            let txt="";
             const datum = Date.now();
+          
+            const ob = Object.assign({}, obrada);
+           
+  
+            const obJson = JSON.stringify(ob);
+       
+          //  const blob1 = new Blob([obJson], { type: 'text/plain' });
+         //   const blob1 = new Blob([obJson], { type: 'application/json' });
+         //   console.log(blob1);
+           // e.currentTarget.href = URL.createObjectURL(blob1);
+           e.currentTarget.setAttribute('href','data:application/json;charset=utf-8,'+encodeURIComponent(obJson));
             let ime = prompt("Unesite ime datoteke", "Datoteka");
-            if (ime == null || ime == "") {
+            if (ime === null || ime === "") {
                 return;
             } else {
                 txt = ime + " " + datum + " JSON.json";
-                link.download = txt;
+                //e.currentTarget.download = txt;
+                e.currentTarget.setAttribute('download',txt);
             }
     
              
-            const ob = Object.assign({}, obrada);
-           
-              
-            const obJson = JSON.stringify(ob);
-               
-            const blob1 = new Blob([obJson], { type: 'text/plain' });
-            link.href = URL.createObjectURL(blob1);
-            URL.revokeObjectURL(link.herf);
+          
+         //   URL.revokeObjectURL(e.currentTarget.herf);
     
         };
     
