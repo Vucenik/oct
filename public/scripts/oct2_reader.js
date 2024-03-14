@@ -104,7 +104,7 @@ klizac.classList.add("pokazi_klizac");
     svifajlovi.addEventListener('click', () => {
       //  klasaKlizaci2.style.display = "block";
         ukupno.push(obradaViseFilova(obrada))
-        console.log(ukupno);
+      
         jedna_datoteka=false;
         updateStanje(1,kontejnerTablica,klasaKlizaci,ukupno[ukupno.length-1]);
   
