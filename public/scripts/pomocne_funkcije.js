@@ -152,7 +152,7 @@ export const napraviRGB = (x = []) => {
         ///skidanje tablice obrade u json formatu
         export const skini_obradu=obrada=>e => {
 
-console.log(e.currentTarget);
+
             let txt="";
             const datum = Date.now();
           
