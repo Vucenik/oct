@@ -48,7 +48,7 @@ html{
     --font-color-crveni:rgb(198,0,0);
     --font-color-table:hsl(193, 8%, 36%);
 
-    --boja-znaka-pou:rgba(11,69,94,.9);
+    --boja-znaka-pou:#0b455ee6;
     --form-header:var(--boja-znaka-pou);
     --max-width:60em;
     --linear_gradient:linear-gradient(180deg, hsl(193,40%,80%) -20%,white 20%);
@@ -400,6 +400,7 @@ footer>p{
 
 
 footer a{
+    font-size: 0.8em;
     text-decoration: none;
     color:var(--boja-znaka-pou);
 }
@@ -408,21 +409,44 @@ footer ul{
     display: flex;
 }
 footer li{
-padding: 0.5em;
+   
+padding: 0.2em;
+transition: border 0.5s, opacity 0.5s, background-color 0.5s;
+border-bottom: 2px solid white;
+
 }
+footer li:hover{
+    background-color: var(--background-color-hoover);
+    border-bottom: 2px solid var(--boja-znaka-pou);
+    opacity: 0.8;
+ 
+}
+
 .mediji li>a{
     display: flex;
     align-items: center;
 
 }
 .mediji span:first-of-type{
-    margin: 0.2em;
-    width:1.5em;
-    height:1.5em;
-    background-color: red;
+    margin: 0.3em 0.2em;
+    padding: 0.2;
+    width:1.2em;
+    height:1.2em;
+background-repeat: no-repeat;
+background-position: center center;
+background-size: cover;
 }
 .mediji li:nth-child(1) span:first-of-type{
-    background-color: aliceblue;
+
+    background-image: url('../img/gore.svg');
+}
+.mediji li:nth-child(2) span:first-of-type{
+ 
+    background-image: url('../img/github-mark.svg');
+}
+.mediji li:nth-child(3) span:first-of-type{
+
+    background-image: url('../img/email.svg');
 }
 
 
