@@ -379,10 +379,50 @@ td:last-child{
     color:var(--font-color-crveni);
 }
 footer{
+    margin:0 auto;
+    padding: 1em;
+    width:100%;
+    max-width: var(--max-width);
     min-height: 3em;
    text-align: center;
     flex:0 0 auto;
     margin-top: 2em;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+}
+
+footer>p{
+    padding: 0.5em;
+    flex:1 1 auto;
+}
+
+
+footer a{
+    text-decoration: none;
+    color:var(--boja-znaka-pou);
+}
+footer ul{
+    list-style: none;
+    display: flex;
+}
+footer li{
+padding: 0.5em;
+}
+.mediji li>a{
+    display: flex;
+    align-items: center;
+
+}
+.mediji span:first-of-type{
+    margin: 0.2em;
+    width:1.5em;
+    height:1.5em;
+    background-color: red;
+}
+.mediji li:nth-child(1) span:first-of-type{
+    background-color: aliceblue;
 }
 
 
@@ -390,14 +430,6 @@ footer{
 canvas {
     margin: 1em;
 }
-
-
-
-footer>a{
-    text-decoration: none;
-    color:var(--boja-znaka-pou);
-}
-
 
 #spiner {
     height: 100%;
