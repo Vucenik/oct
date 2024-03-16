@@ -436,6 +436,10 @@ background-repeat: no-repeat;
 background-position: center center;
 background-size: cover;
 }
+.mediji span:nth-of-type(2){
+   display: none;
+
+}
 .mediji li:nth-child(1) span:first-of-type{
 
     background-image: url('../img/gore.svg');
