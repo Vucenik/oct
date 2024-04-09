@@ -29,7 +29,7 @@
 - Korištenje neinvazivne optičke koherentne tomografije s angiografijom te obradom tako dobivenih standardiziranih digitaliziranih prikaza s kompjuterskim programom “OCT Angio analizator VV ” pokazala se kao reproducibilna metoda za kvantifikaciju individualnih vaskularnih gustoća unutar makule. Dobiveni podaci u trendovima i  relativnim iznosima  usporedivi su s podacima iz sličnih studija koje su proučavale makularnu vaskularnu gustoću kod zdravih pojedinaca. Razlike u korištenim uređajima, različitim verzijama kompjuterskih programa za analize s različitim pragom osjetljivosti onemogućuju usporedbu dobivenih podatak u apsolutnim iznosima između različitih studija.
   
 
-## Funkcionalna stranica na [OCT Angio analizator](https://octangio.info/)
+## Funkcionalni program na [OCT Angio analizator](https://octangio.info/)
 
 ## Demo i upute
 
