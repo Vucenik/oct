@@ -24,10 +24,14 @@
  - *>70g. iznosile su 46,76% 
 
    Vaskularna gustoća je stabilna do pedesete godine uz blago povećanje za skupine od 30-39  godine, nakon  50-te godine u svim skupina vaskularna gustoća  počinje progresivno opadati.
+   
 ## Zaključak:
 - Korištenje neinvazivne optičke koherentne tomografije s angiografijom te obradom tako dobivenih standardiziranih digitaliziranih prikaza s kompjuterskim programom “OCT Angio analizator VV ” pokazala se kao reproducibilna metoda za kvantifikaciju individualnih vaskularnih gustoća unutar makule. Dobiveni podaci u trendovima i  relativnim iznosima  usporedivi su s podacima iz sličnih studija koje su proučavale makularnu vaskularnu gustoću kod zdravih pojedinaca. Razlike u korištenim uređajima, različitim verzijama kompjuterskih programa za analize s različitim pragom osjetljivosti onemogućuju usporedbu dobivenih podatak u apsolutnim iznosima između različitih studija.
+  
 
-##Demo
+## Funkcionalna stranica na [OCT Angio analizator](https://octangio.info/)
+
+## Demo i upute
 
 
 
