@@ -262,6 +262,7 @@ dl ul {
     flex:1 1 auto;
     text-overflow: ellipsis;
     white-space: nowrap;
+    overflow: hidden;
   
 }
 .detalji_pokazi_detalji ul>li:nth-of-type(2){
